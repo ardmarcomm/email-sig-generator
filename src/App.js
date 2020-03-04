@@ -44,7 +44,8 @@ class App extends React.Component {
       phoneNumValidity: {
         office: false,
         cell: false
-      }
+      },
+      cantGenerateSig: false
     };
   }
 
@@ -161,11 +162,10 @@ class App extends React.Component {
     ) {
       const myNewState = { ...this.state };
       myNewState.generateButtonClicked = true;
+      myNewState.cantGenerateSig = false;
       this.setState(myNewState);
     } else {
-      console.log(
-        "You cant generate a signature without filling out the required fields"
-      );
+      this.setState({ cantGenerateSig: true });
     }
   };
 
@@ -204,6 +204,7 @@ class App extends React.Component {
             handlePronounChange={this.handlePronounChange}
             handleDegreeChange={this.handleDegreeChange}
             phoneNumValidity={this.state.phoneNumValidity}
+            cantGenerateSig={this.state.cantGenerateSig}
           />
           {this.state.generateButtonClicked && (
             <Output globalState={stateCopy} />

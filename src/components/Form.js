@@ -50,6 +50,12 @@ export default class Form extends Component {
         </div>
       </div>
     );
+    const GenerateSigError = (
+      <div className="error-messages">
+        You must fill all required fields (indicated with a *) before generating
+        a signature.
+      </div>
+    );
     return (
       <article className="sig-form">
         <h3>Name</h3>
@@ -93,7 +99,7 @@ export default class Form extends Component {
         <h3>Address</h3>
         <InputStep
           fieldName={"address"}
-          fieldLabel={"Address"}
+          fieldLabel={"Street Address"}
           handleFieldChange={this.props.handleFieldChange}
         />
         <CityStateZip
@@ -111,6 +117,7 @@ export default class Form extends Component {
           phoneNumValidity={this.props.phoneNumValidity}
           isRequired={[false, false]}
         />
+        {this.props.cantGenerateSig && GenerateSigError}
         <Button handleClick={this.props.handleClick}></Button>
       </article>
     );
