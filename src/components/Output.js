@@ -54,13 +54,23 @@ export default class Output extends Component {
     var gradDesignation = "";
     for (var i = 0; i < this.props.globalState.gradInfo.length; i++) {
       if (i < this.props.globalState.gradInfo.length - 1) {
-        gradDesignation =
+        if(i === 0){
+          gradDesignation =
+          gradDesignation + ", " +
+          "’" +
+          this.props.globalState.gradInfo[i].year.toString().slice(-2) +
+          " " +
+          this.props.globalState.gradInfo[i].degree +
+          ", ";
+        } else {
+          gradDesignation =
           gradDesignation +
           "’" +
           this.props.globalState.gradInfo[i].year.toString().slice(-2) +
           " " +
           this.props.globalState.gradInfo[i].degree +
           ", ";
+        }
       } else {
         gradDesignation =
           gradDesignation +
