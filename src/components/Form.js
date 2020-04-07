@@ -88,6 +88,7 @@ export default class Form extends Component {
           fieldName={["title", "department"]}
           fieldLabel={["Job Title", "Department"]}
           handleFieldChange={this.props.handleFieldChange}
+          fieldDefaultVals={["", ""]}
           autoComplete={true}
           isRequired={[true, true]}
         />
@@ -114,6 +115,7 @@ export default class Form extends Component {
           fieldName={["officePhoneNum", "cellPhoneNum"]}
           fieldLabel={["Office Phone Number", "Cell Phone Number"]}
           handleFieldChange={this.props.handleFieldChange}
+          fieldDefaultVals={["", ""]}
           autoComplete={false}
           phoneNumValidity={this.props.phoneNumValidity}
           isRequired={[false, false]}
