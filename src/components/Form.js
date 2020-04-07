@@ -62,6 +62,7 @@ export default class Form extends Component {
         <DoubleInputStep
           fieldName={["firstName", "lastName"]}
           fieldLabel={["First Name", "Last Name"]}
+          fieldDefaultVals={["##First Name##", "##Last Name##"]}
           handleFieldChange={this.props.handleFieldChange}
           isRequired={[true, true]}
         />
