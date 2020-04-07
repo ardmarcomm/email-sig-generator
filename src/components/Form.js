@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import ReactDOM from "react-dom";
 import DoubleInputStep from "./DoubleInputStep";
 import InputStep from "./InputStep";
 import Button from "./Button";
@@ -8,9 +9,13 @@ import PronounStep from "./PronounStep";
 import CityStateZip from "./CityStateZip";
 import IconButton from "@material-ui/core/IconButton";
 import AddIcon from "@material-ui/icons/AddBoxOutlined";
+import $ from "jquery";
 
 export default class Form extends Component {
   render() {
+    const firstName = $(".tool-first-name").html();
+    const lastName = $(".tool-last-name").html();
+    console.log(firstName);
     const undergradDegrees = this.props.underGradInfo;
     const gradDegrees = this.props.gradInfo;
     const UndergradField = (
@@ -62,7 +67,7 @@ export default class Form extends Component {
         <DoubleInputStep
           fieldName={["firstName", "lastName"]}
           fieldLabel={["First Name", "Last Name"]}
-          fieldDefaultVals={["##First Name##", "##Last Name##"]}
+          fieldDefaultVals={[firstName, lastName]}
           handleFieldChange={this.props.handleFieldChange}
           isRequired={[true, true]}
         />
