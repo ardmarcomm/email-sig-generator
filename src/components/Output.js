@@ -8,10 +8,15 @@ function makePhoneNum(input) {
   return inputArray.join("");
 }
 
+function makeDepartment(input) {
+  var inputDepartment = input.split(" ");
+  return inputDepartment.join(" ");
+}
+
 export default class Output extends Component {
   state = {
     value: "",
-    copied: false
+    copied: false,
   };
   render() {
     const Pronouns = (
@@ -27,9 +32,11 @@ export default class Output extends Component {
 
     const Job = (
       <span className="job">
-        {this.props.globalState.title}
+        <span id="title">{this.props.globalState.title}</span>
         {this.props.globalState.department.length > 0 && ", "}
-        {this.props.globalState.department}
+        <span id="department">
+          {makeDepartment(this.props.globalState.department)}
+        </span>
         <br />
       </span>
     );
@@ -51,33 +58,40 @@ export default class Output extends Component {
     );
 
     // create gradDesignation
-    var gradDesignation = "";
-    for (var i = 0; i < this.props.globalState.gradInfo.length; i++) {
-      if (i < this.props.globalState.gradInfo.length - 1) {
-        if(i === 0){
-          gradDesignation =
-          gradDesignation + ", " +
-          "’" +
-          this.props.globalState.gradInfo[i].year.toString().slice(-2) +
-          " " +
-          this.props.globalState.gradInfo[i].degree +
-          ", ";
+    if (this.props.globalState.isGradAlum) {
+      var gradDesignation = `${
+        this.props.globalState.isUndergradAlum
+          ? ", "
+          : " "
+      }`;
+      for (var i = 0; i < this.props.globalState.gradInfo.length; i++) {
+        if (i < this.props.globalState.gradInfo.length - 1) {
+          if (i === 0) {
+            gradDesignation =
+              gradDesignation +
+              ", " +
+              "’" +
+              this.props.globalState.gradInfo[i].year.toString().slice(-2) +
+              " " +
+              this.props.globalState.gradInfo[i].degree +
+              ", ";
+          } else {
+            gradDesignation =
+              gradDesignation +
+              "’" +
+              this.props.globalState.gradInfo[i].year.toString().slice(-2) +
+              " " +
+              this.props.globalState.gradInfo[i].degree +
+              ", ";
+          }
         } else {
           gradDesignation =
-          gradDesignation +
-          "’" +
-          this.props.globalState.gradInfo[i].year.toString().slice(-2) +
-          " " +
-          this.props.globalState.gradInfo[i].degree +
-          ", ";
+            gradDesignation +
+            "’" +
+            this.props.globalState.gradInfo[i].year.toString().slice(-2) +
+            " " +
+            this.props.globalState.gradInfo[i].degree;
         }
-      } else {
-        gradDesignation =
-          gradDesignation +
-          "’" +
-          this.props.globalState.gradInfo[i].year.toString().slice(-2) +
-          " " +
-          this.props.globalState.gradInfo[i].degree;
       }
     }
 
@@ -85,21 +99,61 @@ export default class Output extends Component {
     for (var i = 0; i < this.props.globalState.underGradInfo.length; i++) {
       undergradDesignation =
         undergradDesignation +
-        "’" +
+        " ’" +
         this.props.globalState.underGradInfo[i].year.toString().slice(-2);
     }
+
+    // create parentDesignation
+    if (this.props.globalState.isParentAlum) {
+      var parentDesignation = `${
+        this.props.globalState.isUndergradAlum ||
+        this.props.globalState.isGradAlum
+          ? ", "
+          : " "
+      }`;
+      for (var i = 0; i < this.props.globalState.parentInfo.length; i++) {
+        if (i < this.props.globalState.parentInfo.length - 1) {
+          if (i === 0) {
+            parentDesignation =
+              parentDesignation +
+              "’" +
+              this.props.globalState.parentInfo[i].year.toString().slice(-2) +
+              " " +
+              this.props.globalState.parentInfo[i].degree +
+              ", ";
+          } else {
+            parentDesignation =
+              parentDesignation +
+              "’" +
+              this.props.globalState.parentInfo[i].year.toString().slice(-2) +
+              " " +
+              this.props.globalState.parentInfo[i].degree +
+              ", ";
+          }
+        } else {
+          parentDesignation =
+            parentDesignation +
+            "’" +
+            this.props.globalState.parentInfo[i].year.toString().slice(-2) +
+            " " +
+            this.props.globalState.parentInfo[i].degree;
+        }
+      }
+    }
+
     return (
       <section className="sig-result">
         <div className="sig-result__wrapper">
           <table
             cellPadding="0"
             cellSpacing="0"
+            width="260"
             style={{
               borderTop: "1px solid #4e2a84",
               borderBottom: "1px solid #4e2a84",
               fontFamily: '"Arial"',
               fontSize: "11px",
-              color: "#716C6B"
+              color: "#716C6B",
             }}
           >
             <tbody>
@@ -110,15 +164,17 @@ export default class Output extends Component {
                     fontSize: "13px",
                     color: "#4e2a84",
                     paddingTop: "10px",
-                    lineHeight: "1.2"
+                    lineHeight: "1.2",
                   }}
                 >
                   <strong>
                     {this.props.globalState.firstName}{" "}
-                    {this.props.globalState.lastName}{" "}
+                    {`${this.props.globalState.middleName.length > 0 ? this.props.globalState.middleName + " ": ""}`}
+                    {this.props.globalState.lastName}
                     {this.props.globalState.isUndergradAlum &&
                       undergradDesignation}
                     {this.props.globalState.isGradAlum && gradDesignation}
+                    {this.props.globalState.isParentAlum && parentDesignation}
                   </strong>
                 </td>
               </tr>
@@ -129,7 +185,7 @@ export default class Output extends Component {
                     fontSize: "11px",
                     color: "#716C6B",
                     paddingTop: "10px",
-                    lineHeight: "1.29"
+                    lineHeight: "1.29",
                   }}
                 >
                   {this.props.globalState.pronouns.subject.length > 0 &&
@@ -152,14 +208,11 @@ export default class Output extends Component {
                     color: "#716C6B",
                     paddingTop: "10px",
                     paddingBottom: "20px",
-                    lineHeight: "1.29"
+                    lineHeight: "1.29",
                   }}
                 >
                   <span className="address">
                     {this.props.globalState.address}
-                    {", "}
-                    {this.props.globalState.city} {this.props.globalState.state}{" "}
-                    {this.props.globalState.zip}
                   </span>
                   {this.props.globalState.phoneNumValidity.office && OfficeNum}
                   {this.props.globalState.phoneNumValidity.cell && CellNum}
@@ -173,7 +226,7 @@ export default class Output extends Component {
             style={{
               fontFamily: '"Arial"',
               fontSize: "11px",
-              color: "#716C6B"
+              color: "#716C6B",
             }}
           >
             <tbody>
@@ -184,13 +237,13 @@ export default class Output extends Component {
                     fontSize: "13px",
                     color: "#4e2a84",
                     paddingTop: "10px",
-                    lineHeight: "1.2"
+                    lineHeight: "1.2",
                   }}
                 >
                   <strong>
                     <a
                       style={{
-                        color: "#4e2a84"
+                        color: "#4e2a84",
                       }}
                       href="https://wewill.northwestern.edu/s/1479/282-giving/index-campaign.aspx?gid=282&pgid=61&utm_medium=email&utm_source=ARD%20email&utm_campaign=ARD%20Email%20Signature"
                     >
@@ -199,7 +252,7 @@ export default class Output extends Component {
                     <br />
                     <a
                       style={{
-                        color: "#4e2a84"
+                        color: "#4e2a84",
                       }}
                       href="https://www.alumni.northwestern.edu/s/1479/02-naa/16/home.aspx?sid=1479&gid=2&pgid=20761&utm_medium=email&utm_source=ARD%20email&utm_campaign=ARD%20Email%20Signature"
                     >
@@ -215,7 +268,7 @@ export default class Output extends Component {
                     fontSize: "11px",
                     color: "#716C6B",
                     paddingTop: "10px",
-                    lineHeight: "1.29"
+                    lineHeight: "1.29",
                   }}
                 >
                   <a

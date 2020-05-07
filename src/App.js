@@ -8,11 +8,11 @@ import nuPurple from "@material-ui/core/colors/nuPurple";
 
 const theme = createMuiTheme({
   palette: {
-    primary: nuPurple
+    primary: nuPurple,
   },
   typography: {
-    fontFamily: ['"Akkurat Pro Regular"']
-  }
+    fontFamily: ['"Akkurat Pro Regular"'],
+  },
 });
 
 class App extends React.Component {
@@ -22,34 +22,52 @@ class App extends React.Component {
       generateButtonClicked: false,
       firstName: "",
       lastName: "",
+      middleName: "",
       isUndergradAlum: false,
       isGradAlum: false,
+      isParentAlum: false,
       underGradInfo: [],
       gradInfo: [],
+      parentInfo: [],
       pronouns: {
         subject: "",
         object: "",
-        possessive: ""
+        possessive: "",
       },
       title: "",
       department: "",
       org: "Alumni Relations and Development",
       specialMsg: "Commemorating 150 years of women students",
       address: "",
-      city: "",
-      state: "",
-      zip: "",
       officePhoneNum: "",
       cellPhoneNum: "",
       phoneNumValidity: {
         office: false,
-        cell: false
+        cell: false,
       },
-      cantGenerateSig: false
+      cantGenerateSig: false,
     };
   }
 
-  isClassYearValid = yearInput => {
+  componentDidMount() {
+    const tempState = JSON.parse(localStorage.getItem('localState'));
+
+    if (tempState) {
+      this.setState(tempState)
+    } else {
+      console.log("There was no local storage memory");
+    }
+  }
+
+  componentWillUpdate(nextProps, nextState) {
+    localStorage.setItem('localState', JSON.stringify(nextState));
+  }
+
+  checkLocalStorage = () => {
+
+  }
+
+  isClassYearValid = (yearInput) => {
     yearInput = parseInt(yearInput);
     if (yearInput >= 1935 && yearInput <= 2025) {
       return true;
@@ -58,7 +76,7 @@ class App extends React.Component {
     }
   };
 
-  isPhoneNumValid = phoneNum => {
+  isPhoneNumValid = (phoneNum) => {
     var isnum = /^\d+$/.test(phoneNum);
     if (isnum) {
       if (phoneNum.length === 10) {
@@ -109,11 +127,18 @@ class App extends React.Component {
   handleAddDegree = () => {
     const obj = { degree: "", year: 0, isYearValid: false };
     this.setState({
-      gradInfo: [...this.state.gradInfo, obj]
+      gradInfo: [...this.state.gradInfo, obj],
     });
   };
 
-  handleRemoveDegree = value => {};
+  handleAddParentDegree = () => {
+    const obj = { degree: "", year: 0, isYearValid: false };
+    this.setState({
+      parentInfo: [...this.state.parentInfo, obj],
+    });
+  };
+
+  handleRemoveDegree = (value) => {};
 
   handleUndergradAlumToggle = () => {
     const { isUndergradAlum } = this.state;
@@ -123,7 +148,7 @@ class App extends React.Component {
     } else {
       const obj = { year: 0, isYearValid: false };
       this.setState({
-        underGradInfo: [...this.state.underGradInfo, obj]
+        underGradInfo: [...this.state.underGradInfo, obj],
       });
       this.setState({ isUndergradAlum: !isUndergradAlum });
     }
@@ -137,11 +162,25 @@ class App extends React.Component {
     } else {
       const obj = { degree: "", year: 0, isYearValid: false };
       this.setState({
-        gradInfo: [...this.state.gradInfo, obj]
+        gradInfo: [...this.state.gradInfo, obj],
       });
       this.setState({ isGradAlum: !isGradAlum });
     }
   };
+
+  handleParentAlumToggle = () => {
+    const { isParentAlum } = this.state;
+    if (isParentAlum) {
+      this.setState({ parentInfo: [] });
+      this.setState({ isParentAlum: !isParentAlum });
+    } else {
+      const obj = {degree: "", year: 0, isYearValid: false};
+      this.setState({
+        parentInfo: [...this.state.parentInfo, obj]
+      });
+      this.setState({ isParentAlum: !isParentAlum});
+    }
+  }
 
   handleDateChange = () => {
     const myNewState = { ...this.state };
@@ -155,10 +194,7 @@ class App extends React.Component {
       this.state.lastName.length > 0 &&
       this.state.title.length > 0 &&
       this.state.department.length > 0 &&
-      this.state.address.length > 0 &&
-      this.state.city.length > 0 &&
-      this.state.state.length > 0 &&
-      this.state.zip.length > 0
+      this.state.address.length > 0
     ) {
       const myNewState = { ...this.state };
       myNewState.generateButtonClicked = true;
@@ -177,12 +213,12 @@ class App extends React.Component {
         <div className="App container">
           <h2>ARD Email Signature Generator</h2>
           <p>
-            This tool will generate a branded email signature for your
-            northwestern staff email. Simply fill out the form below, and click
-            ‘Generate Signature’.
+            Complete the form below to receive a custom, Northwestern-branded
+            signature for your ARD staff email. Simply click “Generate
+            Signature” when you’ve provided the requested information.
           </p>
           <p>
-            For further instructions on how to set a signature on Outlook follow
+            You may copy and paste your new signature into your email template. For further instructions on how to set a signature on Outlook, follow
             &nbsp;
             <a href="https://support.office.com/en-us/article/create-and-add-a-signature-to-messages-8ee5d4f4-68fd-464a-a1c1-0e1c80bb27f2">
               this guide
@@ -194,11 +230,15 @@ class App extends React.Component {
             handleClick={this.handleClick}
             handleUndergradAlumToggle={this.handleUndergradAlumToggle}
             handleGradAlumToggle={this.handleGradAlumToggle}
+            handleParentAlumToggle={this.handleParentAlumToggle}
             isUndergradAlum={this.state.isUndergradAlum}
             isGradAlum={this.state.isGradAlum}
+            isParentAlum={this.state.isParentAlum}
             underGradInfo={this.state.underGradInfo}
             gradInfo={this.state.gradInfo}
+            parentInfo={this.state.parentInfo}
             handleAddDegree={this.handleAddDegree}
+            handleAddParentDegree={this.handleAddParentDegree}
             handleRemoveDegree={this.handleRemoveDegree}
             handleFieldChange={this.handleFieldChange}
             handlePronounChange={this.handlePronounChange}

@@ -17,7 +17,7 @@ export default class CheckboxStep extends Component {
   render() {
     return (
       <FormControlLabel
-        control={<PurpleCheckbox size="medium" />}
+        control={<PurpleCheckbox checked={this.props.isChecked} size="medium" />}
         label={this.props.fieldName}
         onChange={this.props.handleAlumToggle}
         className="margin-bot__small"

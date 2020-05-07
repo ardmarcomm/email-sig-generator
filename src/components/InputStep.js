@@ -7,13 +7,14 @@ export default class InputField extends Component {
   };
   render() {
     return (
-      <div className="form-step">
+      <div className={`form-step${this.props.halfWidth ? " double" : ""}`}>
         <div className="form-step__field">
           <TextField
             className="field__input"
-            required
+            required={this.props.isRequired}
             fullWidth
             variant="outlined"
+            value={this.props.fieldDefaultVals}
             name={this.props.fieldName}
             label={this.props.fieldLabel}
             onChange={this.handleChange}

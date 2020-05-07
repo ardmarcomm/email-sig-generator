@@ -24,7 +24,7 @@ export default class DoubleInputField extends Component {
           <TextField
             className="field__input"
             required={this.props.isRequired[0]}
-            defaultValue={this.props.fieldDefaultVals[0]}
+            value={this.props.fieldDefaultVals[0]}
             fullWidth
             variant="outlined"
             name={this.props.fieldName[0]}
@@ -44,7 +44,7 @@ export default class DoubleInputField extends Component {
           <TextField
             required={this.props.isRequired[1]}
             className="field__input"
-            defaultValue={this.props.fieldDefaultVals[1]}
+            value={this.props.fieldDefaultVals[1]}
             fullWidth
             variant="outlined"
             name={this.props.fieldName[1]}

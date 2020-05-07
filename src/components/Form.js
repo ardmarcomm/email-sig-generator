@@ -5,19 +5,26 @@ import InputStep from "./InputStep";
 import Button from "./Button";
 import CheckboxStep from "./CheckboxStep";
 import DegreeInfo from "./DegreeInfo";
+import ParentInfo from "./ParentInfo";
 import PronounStep from "./PronounStep";
-import CityStateZip from "./CityStateZip";
+import AddressOptions from "./AddressOptions";
+import UniversityProgramming from "./UniversityProgramming"; 
 import IconButton from "@material-ui/core/IconButton";
 import AddIcon from "@material-ui/icons/AddBoxOutlined";
-import $ from "jquery";
 
 export default class Form extends Component {
+  constructor() {
+    super();
+    this.state = {
+      firstNameDefault: "",
+      lastNameDefault: "",
+    };
+  }
+
   render() {
-    const firstName = $(".tool-first-name").html();
-    const lastName = $(".tool-last-name").html();
-    console.log(firstName);
     const undergradDegrees = this.props.underGradInfo;
     const gradDegrees = this.props.gradInfo;
+    const parentDegrees = this.props.parentInfo;
     const UndergradField = (
       <div className="form-step degrees">
         {undergradDegrees.map((degree, index) => (
@@ -25,6 +32,10 @@ export default class Form extends Component {
             key={index}
             arrayID={index}
             handleDegreeChange={this.props.handleDegreeChange}
+            fieldDefaultVals={[
+              "",
+              this.props.globalState.underGradInfo[index].year,
+            ]}
             gradDegree={false}
             isYearValid={degree.isYearValid}
           />
@@ -39,6 +50,10 @@ export default class Form extends Component {
             arrayID={index}
             handleRemoveDegree={this.props.handleRemoveDegree}
             handleDegreeChange={this.props.handleDegreeChange}
+            fieldDefaultVals={[
+              this.props.globalState.gradInfo[index].degree,
+              this.props.globalState.gradInfo[index].year,
+            ]}
             gradDegree={true}
             isYearValid={degree.isYearValid}
           />
@@ -51,10 +66,39 @@ export default class Form extends Component {
           >
             <AddIcon />
           </IconButton>
-          Add Northwestern degree
+          Add Northwestern Degree
         </div>
       </div>
     );
+
+    const ParentField = (
+      <div className="form-step degrees">
+        {parentDegrees.map((degree, index) => (
+          <ParentInfo
+            key={index}
+            arrayID={index}
+            handleRemoveDegree={this.props.handleRemoveDegree}
+            handleDegreeChange={this.props.handleDegreeChange}
+            fieldDefaultVals={[
+              this.props.globalState.parentInfo[index].degree,
+              this.props.globalState.parentInfo[index].year,
+            ]}
+            isYearValid={degree.isYearValid}
+          />
+        ))}
+        <div className="add-degree" onClick={this.props.handleAddParentDegree}>
+          <IconButton
+            onClick={this.props.handleAddParentDegree}
+            aria-label="add a degree"
+            label="test"
+          >
+            <AddIcon />
+          </IconButton>
+          Add Northwestern Degree
+        </div>
+      </div>
+    );
+
     const GenerateSigError = (
       <div className="error-messages">
         You must fill all required fields (indicated with a *) before generating
@@ -67,25 +111,46 @@ export default class Form extends Component {
         <DoubleInputStep
           fieldName={["firstName", "lastName"]}
           fieldLabel={["First Name", "Last Name"]}
-          fieldDefaultVals={[firstName, lastName]}
           handleFieldChange={this.props.handleFieldChange}
+          fieldDefaultVals={[
+            this.props.globalState.firstName,
+            this.props.globalState.lastName,
+          ]}
           isRequired={[true, true]}
         />
-        <h3>NU Degrees</h3>
+        <InputStep
+          fieldName={"middleName"}
+          fieldLabel={"Middle or Former Name (Optional)"}
+          fieldDefaultVals={this.props.globalState.middleName}
+          handleFieldChange={this.props.handleFieldChange}
+          isRequired={false}
+          halfWidth={true}
+        />
+        <h3>Alumni Designation</h3>
         <div className="checkboxes">
           <div className="form-step">
             <CheckboxStep
-              fieldName="Are you a Northwestern undergraduate alum?"
+              fieldName="Are You a Northwestern Undergraduate Alum?"
               handleAlumToggle={this.props.handleUndergradAlumToggle}
+              isChecked={this.props.globalState.isUndergradAlum}
             />
             {this.props.isUndergradAlum && UndergradField}
           </div>
           <div className="form-step">
             <CheckboxStep
-              fieldName="Are you a Northwestern graduate/professional degree holder, or the grandparent/parent of a Northwestern student or alum?"
+              fieldName="Are You a Northwestern Graduate/Professional Degree Holder?"
               handleAlumToggle={this.props.handleGradAlumToggle}
+              isChecked={this.props.globalState.isGradAlum}
             />
             {this.props.isGradAlum && GradField}
+          </div>
+          <div className="form-step">
+            <CheckboxStep
+              fieldName="Are You the Parent/Grandparent of a Northwestern Student or Graduate?"
+              handleAlumToggle={this.props.handleParentAlumToggle}
+              isChecked={this.props.globalState.isParentAlum}
+            />
+            {this.props.isParentAlum && ParentField}
           </div>
         </div>
         <h3>Job</h3>
@@ -93,37 +158,46 @@ export default class Form extends Component {
           fieldName={["title", "department"]}
           fieldLabel={["Job Title", "Department"]}
           handleFieldChange={this.props.handleFieldChange}
-          fieldDefaultVals={["", ""]}
+          fieldDefaultVals={[
+            this.props.globalState.title,
+            this.props.globalState.department,
+          ]}
           autoComplete={true}
           isRequired={[true, true]}
         />
         <h3>Pronouns</h3>
+        <div className="sub-head-helper">Optional</div>
         <PronounStep
           fieldName={["subject", "object", "possessive"]}
           fieldLabel={["Subject", "Object", "Possessive"]}
           handlePronounChange={this.props.handlePronounChange}
         />
-        <h3>Address</h3>
-        <InputStep
-          fieldName={"address"}
-          fieldLabel={"Street Address"}
+        <h3>Work Address</h3>
+        <AddressOptions
           handleFieldChange={this.props.handleFieldChange}
-        />
-        <CityStateZip
-          fieldName={["city", "state", "zip"]}
-          fieldLabel={["City", "State", "Zip"]}
-          handleFieldChange={this.props.handleFieldChange}
-          autoComplete={false}
+          fieldDefaultVals={this.props.globalState.address}
+          isRequired={true}
         />
         <h3>Contact Information</h3>
+        <div className="sub-head-helper">Cell phone number is optional</div>
         <DoubleInputStep
           fieldName={["officePhoneNum", "cellPhoneNum"]}
           fieldLabel={["Office Phone Number", "Cell Phone Number"]}
           handleFieldChange={this.props.handleFieldChange}
-          fieldDefaultVals={["", ""]}
+          fieldDefaultVals={[
+            this.props.globalState.officePhoneNum,
+            this.props.globalState.cellPhoneNum,
+          ]}
           autoComplete={false}
           phoneNumValidity={this.props.phoneNumValidity}
-          isRequired={[false, false]}
+          isRequired={[true, false]}
+        />
+        <h3>University-Specific Programming</h3>
+        <div className="sub-head-helper">University-specific programming is optional.</div>
+        <UniversityProgramming
+          handleFieldChange={this.props.handleFieldChange}
+          fieldDefaultVals={this.props.globalState.specialMsg}
+          isRequired={false}
         />
         {this.props.cantGenerateSig && GenerateSigError}
         <Button handleClick={this.props.handleClick}></Button>

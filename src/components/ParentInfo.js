@@ -9,7 +9,7 @@ import {
 } from "@material-ui/core";
 import { DeleteIcon } from "@material-ui/icons";
 
-export default class DegreeInfo extends Component {
+export default class ParentInfo extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -27,11 +27,7 @@ export default class DegreeInfo extends Component {
   };
 
   handleSelectChange = event => {
-    if (this.props.gradDegree) {
-      var gradType = "gradInfo";
-    } else {
-      var gradType = "underGradInfo";
-    }
+    var gradType = "parentInfo";
     this.setState({ degreeType: event.target.value });
     this.props.handleDegreeChange(
       event.target.value,
@@ -42,11 +38,7 @@ export default class DegreeInfo extends Component {
   };
 
   handleChange = event => {
-    if (this.props.gradDegree) {
-      var gradType = "gradInfo";
-    } else {
-      var gradType = "underGradInfo";
-    }
+    var gradType = "parentInfo";
     this.setState({ classYear: event.target.value });
     this.props.handleDegreeChange(
       event.target.value,
@@ -57,7 +49,7 @@ export default class DegreeInfo extends Component {
   };
 
   render() {
-    const GradDegreeType = (
+    const ParentDegreeType = (
       <div className="form-step__field">
         <FormControl
           required
@@ -65,7 +57,7 @@ export default class DegreeInfo extends Component {
           variant="outlined"
           className="form-control"
         >
-          <InputLabel className="label-control">Degree</InputLabel>
+          <InputLabel className="label-control">Parent or Guardian</InputLabel>
           <Select
             className="select-control"
             value={this.props.fieldDefaultVals[0]}
@@ -73,44 +65,11 @@ export default class DegreeInfo extends Component {
             onChange={this.handleSelectChange}
           >
             <MenuItem value=""></MenuItem>
-            <MenuItem value="DDS" label="Doctor of Dental Surgery">
-              Doctor of Dental Surgery (DDS)
+            <MenuItem value="P" label="Parent of students or alumni (P)">
+            Parent of students or alumni (P)
             </MenuItem>
-            <MenuItem value="DPT" label="Doctor of Physical Therapy">
-              Doctor of Physical Therapy (DPT)
-            </MenuItem>
-            <MenuItem value="GME" label="Graduate Medical Education">
-              Graduate Medical Education (GME)
-            </MenuItem>
-            <MenuItem value="DHL" label="Doctor of Humane Letters">
-              Doctor of Humane Letters (DHL)
-            </MenuItem>
-            <MenuItem value="JD" label="Juris Doctor">
-              Juris Doctor (JD)
-            </MenuItem>
-            <MenuItem value="LLM" label="Master of Laws">
-              Master of Laws (LLM)
-            </MenuItem>
-            <MenuItem value="MA" label="Master of Arts">
-              Master of Arts (MA)
-            </MenuItem>
-            <MenuItem value="MBA" label="Master of Business Administration ">
-              Master of Business Administration (MBA)
-            </MenuItem>
-            <MenuItem value="MD" label="Doctor of Medicine">
-              Doctor of Medicine (MD)
-            </MenuItem>
-            <MenuItem value="MFA" label="Master of Fine Arts">
-              Master of Fine Arts (MFA)
-            </MenuItem>
-            <MenuItem value="MMus" label="Master of Music">
-              Master of Music (MMus)
-            </MenuItem>
-            <MenuItem value="MS" label="Master of Science">
-              Master of Science (MS)
-            </MenuItem>
-            <MenuItem value="PhD" label="Doctor of Philosophy">
-              Doctor of Philosophy (PhD)
+            <MenuItem value="GP" label="Grandparent of students or alumni (GP)">
+            Grandparent of students or alumni (GP)
             </MenuItem>
           </Select>
         </FormControl>
@@ -118,7 +77,7 @@ export default class DegreeInfo extends Component {
     );
     return (
       <div className="form-step double degree">
-        {this.props.gradDegree && GradDegreeType}
+        {ParentDegreeType}
         <FormControl className="form-step__field year">
           <TextField
             className="field__input"
