@@ -1,25 +1,25 @@
 {
   "files": {
-    "main.css": "/email-sig-generator/static/css/main.2869ef52.chunk.css",
-    "main.js": "/email-sig-generator/static/js/main.6552a843.chunk.js",
-    "main.js.map": "/email-sig-generator/static/js/main.6552a843.chunk.js.map",
+    "main.css": "/email-sig-generator/static/css/main.bdd93a16.chunk.css",
+    "main.js": "/email-sig-generator/static/js/main.bf110896.chunk.js",
+    "main.js.map": "/email-sig-generator/static/js/main.bf110896.chunk.js.map",
     "runtime-main.js": "/email-sig-generator/static/js/runtime-main.dbba1148.js",
     "runtime-main.js.map": "/email-sig-generator/static/js/runtime-main.dbba1148.js.map",
     "static/css/2.afeb903f.chunk.css": "/email-sig-generator/static/css/2.afeb903f.chunk.css",
-    "static/js/2.a40e01da.chunk.js": "/email-sig-generator/static/js/2.a40e01da.chunk.js",
-    "static/js/2.a40e01da.chunk.js.map": "/email-sig-generator/static/js/2.a40e01da.chunk.js.map",
+    "static/js/2.cee2403d.chunk.js": "/email-sig-generator/static/js/2.cee2403d.chunk.js",
+    "static/js/2.cee2403d.chunk.js.map": "/email-sig-generator/static/js/2.cee2403d.chunk.js.map",
     "index.html": "/email-sig-generator/index.html",
-    "precache-manifest.d8a950dfe54fa8b8fefb6bf057ecbc70.js": "/email-sig-generator/precache-manifest.d8a950dfe54fa8b8fefb6bf057ecbc70.js",
+    "precache-manifest.c2ac12996b8e956e1fc4022c26008b26.js": "/email-sig-generator/precache-manifest.c2ac12996b8e956e1fc4022c26008b26.js",
     "service-worker.js": "/email-sig-generator/service-worker.js",
     "static/css/2.afeb903f.chunk.css.map": "/email-sig-generator/static/css/2.afeb903f.chunk.css.map",
-    "static/css/main.2869ef52.chunk.css.map": "/email-sig-generator/static/css/main.2869ef52.chunk.css.map",
-    "static/js/2.a40e01da.chunk.js.LICENSE.txt": "/email-sig-generator/static/js/2.a40e01da.chunk.js.LICENSE.txt"
+    "static/css/main.bdd93a16.chunk.css.map": "/email-sig-generator/static/css/main.bdd93a16.chunk.css.map",
+    "static/js/2.cee2403d.chunk.js.LICENSE.txt": "/email-sig-generator/static/js/2.cee2403d.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.dbba1148.js",
     "static/css/2.afeb903f.chunk.css",
-    "static/js/2.a40e01da.chunk.js",
-    "static/css/main.2869ef52.chunk.css",
-    "static/js/main.6552a843.chunk.js"
+    "static/js/2.cee2403d.chunk.js",
+    "static/css/main.bdd93a16.chunk.css",
+    "static/js/main.bf110896.chunk.js"
   ]
 }
