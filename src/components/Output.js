@@ -172,9 +172,9 @@ export default class Output extends Component {
                     {`${this.props.globalState.middleName.length > 0 ? this.props.globalState.middleName + " ": ""}`}
                     {this.props.globalState.lastName}
                     {this.props.globalState.isUndergradAlum &&
-                      undergradDesignation}
-                    {this.props.globalState.isGradAlum && gradDesignation}
-                    {this.props.globalState.isParentAlum && parentDesignation}
+                      undergradDesignation.length > 3 ? undergradDesignation : ""}
+                    {this.props.globalState.isGradAlum && gradDesignation.length > 5 ? gradDesignation : ""}
+                    {this.props.globalState.isParentAlum && parentDesignation.length > 5 && parentDesignation}
                   </strong>
                 </td>
               </tr>
@@ -237,7 +237,7 @@ export default class Output extends Component {
                     fontSize: "13px",
                     color: "#4e2a84",
                     paddingTop: "10px",
-                    lineHeight: "1.2",
+                    lineHeight: "1.5",
                   }}
                 >
                   <strong>

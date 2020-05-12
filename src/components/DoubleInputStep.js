@@ -37,7 +37,7 @@ export default class DoubleInputField extends Component {
           />
           {this.state.officePhoneNum != 0 &&
             !this.props.phoneNumValidity.office && (
-              <div className="errorText">* Must be 10 digit phone number</div>
+              <div className="errorText">* Must be 10 digit phone number (no hyphens, or special characters)</div>
             )}
         </div>
         <div className="form-step__field">
@@ -56,7 +56,7 @@ export default class DoubleInputField extends Component {
           />
           {this.state.cellPhoneNum != 0 &&
             !this.props.phoneNumValidity.cell && (
-              <div className="errorText">* Must be 10 digit phone number</div>
+              <div className="errorText">* Must be 10 digit phone number (no hyphens, or special characters)</div>
             )}
         </div>
       </div>

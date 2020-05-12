@@ -94,7 +94,7 @@ export default class Form extends Component {
           >
             <AddIcon />
           </IconButton>
-          Add Northwestern Degree
+          Add another
         </div>
       </div>
     );
@@ -172,7 +172,7 @@ export default class Form extends Component {
           fieldLabel={["Subject", "Object", "Possessive"]}
           handlePronounChange={this.props.handlePronounChange}
         />
-        <h3>Work Address</h3>
+        <h3>Address</h3>
         <AddressOptions
           handleFieldChange={this.props.handleFieldChange}
           fieldDefaultVals={this.props.globalState.address}
@@ -193,7 +193,7 @@ export default class Form extends Component {
           isRequired={[true, false]}
         />
         <h3>University-Specific Programming</h3>
-        <div className="sub-head-helper">University-specific programming is optional.</div>
+        <div className="sub-head-helper">Optional Programming Message</div>
         <UniversityProgramming
           handleFieldChange={this.props.handleFieldChange}
           fieldDefaultVals={this.props.globalState.specialMsg}

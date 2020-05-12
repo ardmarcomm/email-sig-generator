@@ -57,7 +57,7 @@ export default class ParentInfo extends Component {
           variant="outlined"
           className="form-control"
         >
-          <InputLabel className="label-control">Parent or Guardian</InputLabel>
+          <InputLabel className="label-control">Select parent, or grandparent</InputLabel>
           <Select
             className="select-control"
             value={this.props.fieldDefaultVals[0]}

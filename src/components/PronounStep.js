@@ -27,15 +27,15 @@ const objects = [
 ];
 
 const possessives = [
-  { title: "(f)aer", value: "(f)aer", type: "possessive" },
-  { title: "eir", value: "eir", type: "possessive" },
+  { title: "(f)aers", value: "(f)aers", type: "possessive" },
+  { title: "eirs", value: "eirs", type: "possessive" },
   { title: "his", value: "his", type: "possessive" },
   { title: "pers", value: "pers", type: "possessive" },
-  { title: "her", value: "her", type: "possessive" },
-  { title: "their", value: "their", type: "possessive" },
+  { title: "hers", value: "hers", type: "possessive" },
+  { title: "theirs", value: "theirs", type: "possessive" },
   { title: "vis", value: "vis", type: "possessive" },
-  { title: "xyr", value: "xyr", type: "possessive" },
-  { title: "hir", value: "hir", type: "possessive" }
+  { title: "xyrs", value: "xyrs", type: "possessive" },
+  { title: "hirs", value: "hirs", type: "possessive" }
 ];
 
 export default class PronounStep extends Component {

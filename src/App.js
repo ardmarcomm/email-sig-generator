@@ -125,14 +125,14 @@ class App extends React.Component {
   };
 
   handleAddDegree = () => {
-    const obj = { degree: "", year: 0, isYearValid: false };
+    const obj = { degree: "", year: "", isYearValid: false };
     this.setState({
       gradInfo: [...this.state.gradInfo, obj],
     });
   };
 
   handleAddParentDegree = () => {
-    const obj = { degree: "", year: 0, isYearValid: false };
+    const obj = { degree: "", year: "", isYearValid: false };
     this.setState({
       parentInfo: [...this.state.parentInfo, obj],
     });
@@ -146,7 +146,7 @@ class App extends React.Component {
       this.setState({ underGradInfo: [] });
       this.setState({ isUndergradAlum: !isUndergradAlum });
     } else {
-      const obj = { year: 0, isYearValid: false };
+      const obj = { year: "", isYearValid: false };
       this.setState({
         underGradInfo: [...this.state.underGradInfo, obj],
       });
@@ -160,7 +160,7 @@ class App extends React.Component {
       this.setState({ gradInfo: [] });
       this.setState({ isGradAlum: !isGradAlum });
     } else {
-      const obj = { degree: "", year: 0, isYearValid: false };
+      const obj = { degree: "", year: "", isYearValid: false };
       this.setState({
         gradInfo: [...this.state.gradInfo, obj],
       });
@@ -174,7 +174,7 @@ class App extends React.Component {
       this.setState({ parentInfo: [] });
       this.setState({ isParentAlum: !isParentAlum });
     } else {
-      const obj = {degree: "", year: 0, isYearValid: false};
+      const obj = {degree: "", year: "", isYearValid: false};
       this.setState({
         parentInfo: [...this.state.parentInfo, obj]
       });
@@ -218,10 +218,9 @@ class App extends React.Component {
             Signature” when you’ve provided the requested information.
           </p>
           <p>
-            You may copy and paste your new signature into your email template. For further instructions on how to set a signature on Outlook, follow
-            &nbsp;
-            <a href="https://support.office.com/en-us/article/create-and-add-a-signature-to-messages-8ee5d4f4-68fd-464a-a1c1-0e1c80bb27f2">
-              this guide
+            You may copy and paste your new signature into your email template. For further instructions on how to set a signature on Outlook, follow&nbsp;
+            <a target="_blank" href="https://support.office.com/en-us/article/create-and-add-a-signature-to-messages-8ee5d4f4-68fd-464a-a1c1-0e1c80bb27f2">
+            this guide
             </a>
             .
           </p>
