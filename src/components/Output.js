@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { CopyToClipboard } from "react-copy-to-clipboard";
 
 function makePhoneNum(input) {
   var inputArray = input.split("");
