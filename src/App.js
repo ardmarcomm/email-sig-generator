@@ -224,6 +224,9 @@ class App extends React.Component {
             </a>
             .
           </p>
+          <p>
+            Note: Asterisks (*) indicate required information.
+          </p>
           <Form
             globalState={stateCopy}
             handleClick={this.handleClick}
