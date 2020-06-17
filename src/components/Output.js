@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Block } from "@material-ui/icons";
 
 function makePhoneNum(input) {
   var inputArray = input.split("");
@@ -12,11 +13,30 @@ function makeDepartment(input) {
   return inputDepartment.join(" ");
 }
 
+
+
 export default class Output extends Component {
-  state = {
-    value: "",
-    copied: false,
-  };
+  constructor(props){
+    super(props);
+    this.titleRef = React.createRef;
+    this.myDep = React.createRef;
+    this.state = {
+      value: "",
+      copied: false,
+      titleWidth: 0,
+      depWidth: 0,
+      widthSum: 0,
+
+    };
+  }
+
+  componentDidMount(){
+    console.log(this.titleRef);
+  }
+
+  componentDidUpdate(){
+    console.log(this.titleRef);
+  }
   render() {
     const Pronouns = (
       <span className="pronouns">
@@ -29,14 +49,20 @@ export default class Output extends Component {
       </span>
     );
 
+    var myTitle = this.props.globalState.title;
+    var titleArray = myTitle.split(" ");
+    myTitle = titleArray.join('\xa0');
+
     const Job = (
-      <span className="job">
-        <span id="title">{this.props.globalState.title}</span>
-        {this.props.globalState.department.length > 0 && ", "}
-        <span id="department">
+      <span
+        className="job"
+      >
+        <span id="title">{myTitle}</span>
+        {this.props.globalState.department.length > 0 ? ", " : ""}
+        <span id="department"
+        style={myTitle.length >= 17 ? {display: "block"} : {}}>
           {makeDepartment(this.props.globalState.department)}
         </span>
-        <br />
       </span>
     );
 
