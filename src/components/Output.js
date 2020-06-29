@@ -56,6 +56,9 @@ export default class Output extends Component {
     const Job = (
       <span
         className="job"
+        style={{
+          display: "block"
+        }}
       >
         <span id="title">{myTitle}</span>
         {this.props.globalState.department.length > 0 ? ", " : ""}
