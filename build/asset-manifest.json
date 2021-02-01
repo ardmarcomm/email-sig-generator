@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/email-sig-generator/static/css/main.03455d91.chunk.css",
+    "main.js": "/email-sig-generator/static/js/main.ebb727c1.chunk.js",
+    "main.js.map": "/email-sig-generator/static/js/main.ebb727c1.chunk.js.map",
+    "runtime-main.js": "/email-sig-generator/static/js/runtime-main.90204a69.js",
+    "runtime-main.js.map": "/email-sig-generator/static/js/runtime-main.90204a69.js.map",
+    "static/css/2.8ec8d563.chunk.css": "/email-sig-generator/static/css/2.8ec8d563.chunk.css",
+    "static/js/2.75c507c8.chunk.js": "/email-sig-generator/static/js/2.75c507c8.chunk.js",
+    "static/js/2.75c507c8.chunk.js.map": "/email-sig-generator/static/js/2.75c507c8.chunk.js.map",
+    "index.html": "/email-sig-generator/index.html",
+    "precache-manifest.67260b44e5ba6ba7ebb94a2ebddb0733.js": "/email-sig-generator/precache-manifest.67260b44e5ba6ba7ebb94a2ebddb0733.js",
+    "service-worker.js": "/email-sig-generator/service-worker.js",
+    "static/css/2.8ec8d563.chunk.css.map": "/email-sig-generator/static/css/2.8ec8d563.chunk.css.map",
+    "static/css/main.03455d91.chunk.css.map": "/email-sig-generator/static/css/main.03455d91.chunk.css.map",
+    "static/js/2.75c507c8.chunk.js.LICENSE.txt": "/email-sig-generator/static/js/2.75c507c8.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.90204a69.js",
+    "static/css/2.8ec8d563.chunk.css",
+    "static/js/2.75c507c8.chunk.js",
+    "static/css/main.03455d91.chunk.css",
+    "static/js/main.ebb727c1.chunk.js"
+  ]
+}
