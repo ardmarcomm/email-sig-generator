@@ -13,10 +13,8 @@ function makeDepartment(input) {
   return inputDepartment.join(" ");
 }
 
-
-
 export default class Output extends Component {
-  constructor(props){
+  constructor(props) {
     super(props);
     this.titleRef = React.createRef;
     this.myDep = React.createRef;
@@ -26,15 +24,14 @@ export default class Output extends Component {
       titleWidth: 0,
       depWidth: 0,
       widthSum: 0,
-
     };
   }
 
-  componentDidMount(){
+  componentDidMount() {
     console.log(this.titleRef);
   }
 
-  componentDidUpdate(){
+  componentDidUpdate() {
     console.log(this.titleRef);
   }
   render() {
@@ -51,21 +48,23 @@ export default class Output extends Component {
 
     var myTitle = this.props.globalState.title;
     var titleArray = myTitle.split(" ");
-    myTitle = titleArray.join('\xa0');
+    myTitle = titleArray.join("\xa0");
 
     const Job = (
       <span
         className="job"
         style={{
-          display: "block"
+          display: "block",
         }}
       >
-        <span id="title">{myTitle}</span>
-        {this.props.globalState.department.length > 0 ? ", " : ""}
-        <span id="department"
-        style={myTitle.length >= 17 ? {display: "block"} : {}}>
-          {makeDepartment(this.props.globalState.department)}
-        </span>
+        <div>
+          <span id="title">{myTitle}</span>
+        </div>
+        <div>
+          <span id="department">
+            {makeDepartment(this.props.globalState.department)}
+          </span>
+        </div>
       </span>
     );
 
@@ -85,12 +84,51 @@ export default class Output extends Component {
       </span>
     );
 
+    const addressStr = (
+      <span className="address">{this.props.globalState.address}</span>
+    );
+
+    const landAcknowledgement = (
+      <table
+            cellPadding="0"
+            cellSpacing="0"
+            style={{
+              fontFamily: '"Arial"',
+              fontSize: "14px",
+              color: "#716C6B",
+              display: "block",
+              width: "100%",
+              maxWidth: "500px",
+            }}
+          >
+            <tbody>
+              <tr>
+                <td
+                  style={{
+                    fontFamily: '"Arial',
+                    fontSize: "12px",
+                    color: "#716C6B",
+                    paddingTop: "20px",
+                  }}
+                >
+                  The Northwestern campus sits on the traditional homelands of
+                  the people of the Council of Three Fires (the Ojibwe,
+                  Potawatomi, and Odawa), as well as the Menominee, Miami, and
+                  Ho-Chunk nations. Learn{" "}
+                  <a href="https://www.northwestern.edu/native-american-and-indigenous-peoples/about/Land%20Acknowledgement.html">
+                    more
+                  </a>
+                  .
+                </td>
+              </tr>
+            </tbody>
+          </table>
+    )
+
     // create gradDesignation
     if (this.props.globalState.isGradAlum) {
       var gradDesignation = `${
-        this.props.globalState.isUndergradAlum
-          ? ", "
-          : " "
+        this.props.globalState.isUndergradAlum ? ", " : " "
       }`;
       for (var i = 0; i < this.props.globalState.gradInfo.length; i++) {
         if (i < this.props.globalState.gradInfo.length - 1) {
@@ -175,13 +213,15 @@ export default class Output extends Component {
           <table
             cellPadding="0"
             cellSpacing="0"
-            width="260"
             style={{
               borderTop: "1px solid #4e2a84",
               borderBottom: "1px solid #4e2a84",
               fontFamily: '"Arial"',
-              fontSize: "11px",
+              fontSize: "14px",
               color: "#716C6B",
+              display: "block",
+              width: "100%",
+              maxWidth: "fit-content",
             }}
           >
             <tbody>
@@ -189,7 +229,7 @@ export default class Output extends Component {
                 <td
                   style={{
                     fontFamily: '"Arial"',
-                    fontSize: "13px",
+                    fontSize: "16px",
                     color: "#4e2a84",
                     paddingTop: "10px",
                     lineHeight: "1.2",
@@ -197,12 +237,23 @@ export default class Output extends Component {
                 >
                   <strong>
                     {this.props.globalState.firstName}{" "}
-                    {`${this.props.globalState.middleName.length > 0 ? this.props.globalState.middleName + " ": ""}`}
+                    {`${
+                      this.props.globalState.middleName.length > 0
+                        ? this.props.globalState.middleName + " "
+                        : ""
+                    }`}
                     {this.props.globalState.lastName}
                     {this.props.globalState.isUndergradAlum &&
-                      undergradDesignation.length > 3 ? undergradDesignation : ""}
-                    {this.props.globalState.isGradAlum && gradDesignation.length > 5 ? gradDesignation : ""}
-                    {this.props.globalState.isParentAlum && parentDesignation.length > 5 && parentDesignation}
+                    undergradDesignation.length > 3
+                      ? undergradDesignation
+                      : ""}
+                    {this.props.globalState.isGradAlum &&
+                    gradDesignation.length > 5
+                      ? gradDesignation
+                      : ""}
+                    {this.props.globalState.isParentAlum &&
+                      parentDesignation.length > 5 &&
+                      parentDesignation}
                   </strong>
                 </td>
               </tr>
@@ -210,38 +261,40 @@ export default class Output extends Component {
                 <td
                   style={{
                     fontFamily: '"Arial"',
-                    fontSize: "11px",
+                    fontSize: "14px",
                     color: "#716C6B",
                     paddingTop: "10px",
-                    lineHeight: "1.29",
+                    lineHeight: "1.37",
                   }}
                 >
                   {this.props.globalState.pronouns.subject.length > 0 &&
                     Pronouns}
                   {this.props.globalState.title.length > 0 && Job}
-                  <span className="org">{this.props.globalState.org}</span>
-                  <br />
-                  <span className="nu">Northwestern University</span>
-                  <br />
-                  <span className="special-msg">
-                    <em>{this.props.globalState.specialMsg}</em>
-                  </span>
+                  <div>
+                    <span className="org">{this.props.globalState.org}</span>
+                  </div>
+                  <div>
+                    <span className="nu">Northwestern University</span>
+                  </div>
+                  <div>
+                    <span className="special-msg">
+                      <em>{this.props.globalState.specialMsg}</em>
+                    </span>
+                  </div>
                 </td>
               </tr>
               <tr>
                 <td
                   style={{
                     fontFamily: '"Arial"',
-                    fontSize: "11px",
+                    fontSize: "14px",
                     color: "#716C6B",
                     paddingTop: "10px",
-                    paddingBottom: "20px",
-                    lineHeight: "1.29",
+                    paddingBottom: "30px",
+                    lineHeight: "1.37",
                   }}
                 >
-                  <span className="address">
-                    {this.props.globalState.address}
-                  </span>
+                  {this.props.globalState.address != "None" && addressStr}
                   {this.props.globalState.phoneNumValidity.office && OfficeNum}
                   {this.props.globalState.phoneNumValidity.cell && CellNum}
                 </td>
@@ -253,7 +306,7 @@ export default class Output extends Component {
             cellSpacing="0"
             style={{
               fontFamily: '"Arial"',
-              fontSize: "11px",
+              fontSize: "14px",
               color: "#716C6B",
             }}
           >
@@ -262,10 +315,10 @@ export default class Output extends Component {
                 <td
                   style={{
                     fontFamily: '"Arial"',
-                    fontSize: "13px",
+                    fontSize: "14px",
                     color: "#4e2a84",
                     paddingTop: "10px",
-                    lineHeight: "1.5",
+                    lineHeight: "1.37",
                   }}
                 >
                   <strong>
@@ -293,10 +346,10 @@ export default class Output extends Component {
                 <td
                   style={{
                     fontFamily: '"Arial"',
-                    fontSize: "11px",
+                    fontSize: "12px",
                     color: "#716C6B",
                     paddingTop: "10px",
-                    lineHeight: "1.29",
+                    lineHeight: "1.37",
                   }}
                 >
                   <a
@@ -323,6 +376,7 @@ export default class Output extends Component {
               </tr>
             </tbody>
           </table>
+          {this.props.globalState.isAcknowledgement && landAcknowledgement}
         </div>
       </section>
     );

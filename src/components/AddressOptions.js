@@ -45,22 +45,52 @@ export default class AddressOptions extends Component {
             >
               <MenuItem value=""></MenuItem>
               <MenuItem
-                value="1201 Davis Street, Evanston IL, 60208"
-                label="1201 Davis Street, Evanston IL, 60208"
+                value="1201 Davis Street, Evanston, Illinois 60208"
+                label="1201 Davis Street, Evanston, Illinois 60208"
               >
-                1201 Davis Street, Evanston IL, 60208
+                1201 Davis Street, Evanston, Illinois 60208
               </MenuItem>
               <MenuItem
-                value="10 Rockefeller Plaza, Suite 800, New York, NY 10020"
-                label="10 Rockefeller Plaza, Suite 800, New York, NY 10020"
+                value="1800 Sheridan Road, Evanston, Illinois 60208"
+                label="1800 Sheridan Road, Evanston, Illinois 60208"
               >
-                10 Rockefeller Plaza, Suite 800, New York, NY 10020
+                1800 Sheridan Road, Evanston, Illinois 60208
               </MenuItem>
               <MenuItem
-                value="44 Montgomery Street, Suite 1250, San Francisco, CA 94104"
-                label="44 Montgomery Street, Suite 1250, San Francisco, CA 94104"
+                value="10 Rockefeller Plaza, Suite 800, New York, New York 10020"
+                label="10 Rockefeller Plaza, Suite 800, New York, New York 10020"
               >
-                44 Montgomery Street, Suite 1250, San Francisco, CA 94104
+                10 Rockefeller Plaza, Suite 800, New York, New York 10020
+              </MenuItem>
+              <MenuItem
+                value="44 Montgomery Street, Suite 1800, San Francisco, California 94104"
+                label="44 Montgomery Street, Suite 1800, San Francisco, California 94104"
+              >
+                44 Montgomery Street, Suite 1800, San Francisco, California 94104
+              </MenuItem>
+              <MenuItem
+                value="1007 Church Street, Suite 400, Evanston, Illinois 60201"
+                label="1007 Church Street, Suite 400, Evanston, Illinois 60201"
+              >
+                1007 Church Street, Suite 400, Evanston, Illinois 60201
+              </MenuItem>
+              <MenuItem
+                value="375 East Chicago Avenue, Levy Mayer, 4th Floor, Chicago, Illinois 60611"
+                label="375 East Chicago Avenue, Levy Mayer, 4th Floor, Chicago, Illinois 60611"
+              >
+                375 East Chicago Avenue, Levy Mayer, 4th Floor, Chicago, Illinois 60611
+              </MenuItem>
+              <MenuItem
+                value="420 East Superior Street, Chicago, Illinois 60611"
+                label="420 East Superior Street, Chicago, Illinois 60611"
+              >
+                420 East Superior Street, Chicago, Illinois 60611
+              </MenuItem>
+              <MenuItem
+                value="None"
+                label="None"
+              >
+                None
               </MenuItem>
             </Select>
           </FormControl>

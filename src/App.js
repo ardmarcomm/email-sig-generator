@@ -26,6 +26,7 @@ class App extends React.Component {
       isUndergradAlum: false,
       isGradAlum: false,
       isParentAlum: false,
+      isAcknowledgement: false,
       underGradInfo: [],
       gradInfo: [],
       parentInfo: [],
@@ -168,6 +169,15 @@ class App extends React.Component {
     }
   };
 
+  handleAcknowledgementToggle = () => {
+    const { isAcknowledgement } = this.state;
+    if (isAcknowledgement) {
+      this.setState({ isAcknowledgement: !isAcknowledgement });
+    } else {
+      this.setState({ isAcknowledgement: !isAcknowledgement });
+    }
+  };
+
   handleParentAlumToggle = () => {
     const { isParentAlum } = this.state;
     if (isParentAlum) {
@@ -233,9 +243,11 @@ class App extends React.Component {
             handleUndergradAlumToggle={this.handleUndergradAlumToggle}
             handleGradAlumToggle={this.handleGradAlumToggle}
             handleParentAlumToggle={this.handleParentAlumToggle}
+            handleAcknowledgementToggle={this.handleAcknowledgementToggle}
             isUndergradAlum={this.state.isUndergradAlum}
             isGradAlum={this.state.isGradAlum}
             isParentAlum={this.state.isParentAlum}
+            isAcknowledgement={this.state.isAcknowledgement}
             underGradInfo={this.state.underGradInfo}
             gradInfo={this.state.gradInfo}
             parentInfo={this.state.parentInfo}

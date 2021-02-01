@@ -199,6 +199,15 @@ export default class Form extends Component {
           fieldDefaultVals={this.props.globalState.specialMsg}
           isRequired={false}
         />
+        <h3>Land Acknowledgement</h3>
+        <div className="sub-head-helper">Optional Land Acknowledgement Message</div>
+        <div className="form-step">
+            <CheckboxStep
+              fieldName="Include land acknowledgement message?"
+              handleAlumToggle={this.props.handleAcknowledgementToggle}
+              isChecked={this.props.isAcknowledgement}
+            />
+          </div>
         {this.props.cantGenerateSig && GenerateSigError}
         <Button handleClick={this.props.handleClick}></Button>
       </article>
