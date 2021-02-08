@@ -4,11 +4,12 @@ import "../node_modules/bootstrap/dist/css/bootstrap-grid.css";
 import { MuiThemeProvider, createMuiTheme } from "@material-ui/core/styles";
 import Form from "./components/Form";
 import Output from "./components/Output";
-import nuPurple from "@material-ui/core/colors/nuPurple";
 
 const theme = createMuiTheme({
   palette: {
-    primary: nuPurple,
+    primary: {
+      main: '#4e2a84',
+    }
   },
   typography: {
     fontFamily: ['"Akkurat Pro Regular"'],
