@@ -42,7 +42,6 @@ export default class Output extends Component {
         {this.props.globalState.pronouns.object}
         {"/"}
         {this.props.globalState.pronouns.possessive})
-        <br />
       </span>
     );
 
