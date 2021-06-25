@@ -27,15 +27,10 @@ class App extends React.Component {
       isUndergradAlum: false,
       isGradAlum: false,
       isParentAlum: false,
-      isAcknowledgement: false,
       underGradInfo: [],
       gradInfo: [],
       parentInfo: [],
-      pronouns: {
-        subject: "",
-        object: "",
-        possessive: "",
-      },
+      pronouns: "",
       title: "",
       department: "",
       org: "Alumni Relations and Development",
@@ -91,12 +86,6 @@ class App extends React.Component {
     }
   };
 
-  handlePronounChange = (value, fieldName) => {
-    const myNewState = { ...this.state };
-    myNewState.pronouns[fieldName] = value;
-    this.setState(myNewState);
-  };
-
   handleFieldChange = (value, fieldName) => {
     const myNewState = { ...this.state };
     myNewState[fieldName] = value;
@@ -127,20 +116,36 @@ class App extends React.Component {
   };
 
   handleAddDegree = () => {
-    const obj = { degree: "", year: "", isYearValid: false };
+    const obj = { degree: "", year: "", isYearValid: false, errMsg: "" };
     this.setState({
       gradInfo: [...this.state.gradInfo, obj],
     });
   };
 
   handleAddParentDegree = () => {
-    const obj = { degree: "", year: "", isYearValid: false };
+    const obj = { degree: "", year: "", isYearValid: false, errMsg: "" };
     this.setState({
       parentInfo: [...this.state.parentInfo, obj],
     });
   };
 
-  handleRemoveDegree = (value) => {};
+  handleRemoveDegree = (idx, type) => {
+    console.log(type);
+    var arrCopy = this.state[type];
+    arrCopy.splice(idx, 1);
+    this.setState({
+      type: arrCopy
+    })
+    if(arrCopy.length === 0){
+      if(type === "parentInfo"){
+        this.setState({isParentAlum: false})
+      } else if(type === "gradInfo") {
+        this.setState({isGradAlum: false})
+      } else {
+        this.setState({isUndergradAlum: false})
+      }
+    }
+  };
 
   handleUndergradAlumToggle = () => {
     const { isUndergradAlum } = this.state;
@@ -148,7 +153,7 @@ class App extends React.Component {
       this.setState({ underGradInfo: [] });
       this.setState({ isUndergradAlum: !isUndergradAlum });
     } else {
-      const obj = { year: "", isYearValid: false };
+      const obj = { year: "", isYearValid: false, errMsg: ""};
       this.setState({
         underGradInfo: [...this.state.underGradInfo, obj],
       });
@@ -162,7 +167,7 @@ class App extends React.Component {
       this.setState({ gradInfo: [] });
       this.setState({ isGradAlum: !isGradAlum });
     } else {
-      const obj = { degree: "", year: "", isYearValid: false };
+      const obj = { degree: "", year: "", isYearValid: false, errMsg: ""};
       this.setState({
         gradInfo: [...this.state.gradInfo, obj],
       });
@@ -185,7 +190,7 @@ class App extends React.Component {
       this.setState({ parentInfo: [] });
       this.setState({ isParentAlum: !isParentAlum });
     } else {
-      const obj = {degree: "", year: "", isYearValid: false};
+      const obj = {degree: "", year: "", isYearValid: false, errMsg: ""};
       this.setState({
         parentInfo: [...this.state.parentInfo, obj]
       });
@@ -200,6 +205,9 @@ class App extends React.Component {
   };
 
   handleClick = () => {
+
+
+
     if (
       this.state.firstName.length > 0 &&
       this.state.lastName.length > 0 &&
@@ -248,7 +256,6 @@ class App extends React.Component {
             isUndergradAlum={this.state.isUndergradAlum}
             isGradAlum={this.state.isGradAlum}
             isParentAlum={this.state.isParentAlum}
-            isAcknowledgement={this.state.isAcknowledgement}
             underGradInfo={this.state.underGradInfo}
             gradInfo={this.state.gradInfo}
             parentInfo={this.state.parentInfo}

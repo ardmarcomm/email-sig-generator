@@ -32,8 +32,12 @@ export default class UniversityProgramming extends Component {
 
   updateData(result) {
     const data = result.data;
-    const filteredData = data.filter(msg =>
-        msg.isEnabledChoice.toLowerCase().includes("true")
+    const filteredData = data.filter(msg =>{
+      if(msg.isEnabledChoice.toLowerCase().includes("true")){
+        msg.messageCopy = msg.messageCopy.replace("&#8209;", "–");
+        return true;
+      }
+    }
     );
     this.setState({ msgChoices: filteredData });
   }

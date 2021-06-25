@@ -102,7 +102,9 @@ export default class PronounStep extends Component {
 
   handleChange = (e, value) => {
     console.log(value);
-    this.props.handlePronounChange(value.value, value.type);
+    if(value !== null){
+      this.props.handlePronounChange(value.value, value.type);
+    }
   };
 
   handleTextFieldChangeSubject = (event) => {

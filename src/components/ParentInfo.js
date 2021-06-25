@@ -7,7 +7,7 @@ import {
   TextField,
   IconButton
 } from "@material-ui/core";
-import { DeleteIcon } from "@material-ui/icons";
+import { Delete } from "@material-ui/icons";
 
 export default class ParentInfo extends Component {
   constructor(props) {
@@ -47,6 +47,10 @@ export default class ParentInfo extends Component {
       this.props.arrayID
     );
   };
+
+  handleDeleteClick = event => {
+    console.log(event.value);
+  }
 
   render() {
     const ParentDegreeType = (
@@ -96,6 +100,13 @@ export default class ParentInfo extends Component {
             </div>
           )}
         </FormControl>
+        <IconButton
+          onClick={e => this.props.handleRemoveDegree(this.props.arrayID, "parentInfo")}
+          aria-label="remove degree info"
+          label="test"
+        >
+          <Delete />
+        </IconButton>
       </div>
     );
   }

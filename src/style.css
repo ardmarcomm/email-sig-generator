@@ -409,6 +409,11 @@ label {
   color: red;
 }
 
+.errorText.below {
+  margin-top: -12px;
+  margin-bottom: 6px;
+}
+
 .error-messages {
   border: 1px solid rgb(255, 0, 0);
   background-color: rgba(255, 0, 0, 0.05);

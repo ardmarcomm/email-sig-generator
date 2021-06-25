@@ -35,13 +35,13 @@ export default class Output extends Component {
     console.log(this.titleRef);
   }
   render() {
+
+    var pronounsStr = this.props.globalState.pronouns.replace(/[{()}]/g, '');
+    pronounsStr = "(" + pronounsStr + ")";
+
     const Pronouns = (
       <span className="pronouns">
-        ({this.props.globalState.pronouns.subject}
-        {"/"}
-        {this.props.globalState.pronouns.object}
-        {"/"}
-        {this.props.globalState.pronouns.possessive})
+        {pronounsStr}
       </span>
     );
 
@@ -87,121 +87,99 @@ export default class Output extends Component {
       <span className="address">{this.props.globalState.address}</span>
     );
 
-    const landAcknowledgement = (
-      <table
-            cellPadding="0"
-            cellSpacing="0"
-            style={{
-              fontFamily: '"Arial"',
-              fontSize: "14px",
-              color: "#716C6B",
-              display: "block",
-              width: "100%",
-              maxWidth: "500px",
-            }}
-          >
-            <tbody>
-              <tr>
-                <td
-                  style={{
-                    fontFamily: '"Arial',
-                    fontSize: "12px",
-                    color: "#716C6B",
-                    paddingTop: "20px",
-                  }}
-                >
-                  The Northwestern campus sits on the traditional homelands of
-                  the people of the Council of Three Fires (the Ojibwe,
-                  Potawatomi, and Odawa), as well as the Menominee, Miami, and
-                  Ho-Chunk nations. Learn{" "}
-                  <a href="https://www.northwestern.edu/native-american-and-indigenous-peoples/about/Land%20Acknowledgement.html">
-                    more
-                  </a>
-                  .
-                </td>
-              </tr>
-            </tbody>
-          </table>
-    )
+    var undergradDesignation = "";
+    for (var i = 0; i < this.props.globalState.underGradInfo.length; i++) {
+      if (this.props.globalState.underGradInfo[i].isYearValid) {
+        undergradDesignation =
+          undergradDesignation +
+          " ’" +
+          this.props.globalState.underGradInfo[i].year.toString().slice(-2);
+      } 
+    }
 
+    var gradDesignation = "";
     // create gradDesignation
     if (this.props.globalState.isGradAlum) {
-      var gradDesignation = `${
-        this.props.globalState.isUndergradAlum ? ", " : " "
-      }`;
+      gradDesignation = `${undergradDesignation.length > 0 ? ", " : " "
+        }`;
       for (var i = 0; i < this.props.globalState.gradInfo.length; i++) {
         if (i < this.props.globalState.gradInfo.length - 1) {
           if (i === 0) {
-            gradDesignation =
-              gradDesignation +
-              ", " +
-              "’" +
-              this.props.globalState.gradInfo[i].year.toString().slice(-2) +
-              " " +
-              this.props.globalState.gradInfo[i].degree +
-              ", ";
+            if (this.props.globalState.gradInfo[i].degree.length > 0) {
+              gradDesignation =
+                gradDesignation +
+                ", " +
+                "’" +
+                this.props.globalState.gradInfo[i].year.toString().slice(-2) +
+                " " +
+                this.props.globalState.gradInfo[i].degree +
+                ", ";
+            }
           } else {
-            gradDesignation =
-              gradDesignation +
-              "’" +
-              this.props.globalState.gradInfo[i].year.toString().slice(-2) +
-              " " +
-              this.props.globalState.gradInfo[i].degree +
-              ", ";
+            if (this.props.globalState.gradInfo[i].degree.length > 0) {
+              gradDesignation =
+                gradDesignation +
+                "’" +
+                this.props.globalState.gradInfo[i].year.toString().slice(-2) +
+                " " +
+                this.props.globalState.gradInfo[i].degree +
+                ", ";
+            }
           }
         } else {
-          gradDesignation =
-            gradDesignation +
-            "’" +
-            this.props.globalState.gradInfo[i].year.toString().slice(-2) +
-            " " +
-            this.props.globalState.gradInfo[i].degree;
+          if (this.props.globalState.gradInfo[i].degree.length > 0) {
+            gradDesignation =
+              gradDesignation +
+              "’" +
+              this.props.globalState.gradInfo[i].year.toString().slice(-2) +
+              " " +
+              this.props.globalState.gradInfo[i].degree;
+          }
         }
       }
     }
 
-    var undergradDesignation = "";
-    for (var i = 0; i < this.props.globalState.underGradInfo.length; i++) {
-      undergradDesignation =
-        undergradDesignation +
-        " ’" +
-        this.props.globalState.underGradInfo[i].year.toString().slice(-2);
-    }
-
     // create parentDesignation
     if (this.props.globalState.isParentAlum) {
-      var parentDesignation = `${
-        this.props.globalState.isUndergradAlum ||
-        this.props.globalState.isGradAlum
-          ? ", "
-          : " "
-      }`;
+      var parentDesignation = `${undergradDesignation.length > 0 ||
+        gradDesignation.length > 0
+        ? ", "
+        : " "
+        }`;
       for (var i = 0; i < this.props.globalState.parentInfo.length; i++) {
         if (i < this.props.globalState.parentInfo.length - 1) {
           if (i === 0) {
-            parentDesignation =
-              parentDesignation +
-              "’" +
-              this.props.globalState.parentInfo[i].year.toString().slice(-2) +
-              " " +
-              this.props.globalState.parentInfo[i].degree +
-              ", ";
+            if (this.props.globalState.parentInfo[i].degree.length > 0) {
+              parentDesignation =
+                parentDesignation +
+                "’" +
+                this.props.globalState.parentInfo[i].year.toString().slice(-2) +
+                " " +
+                this.props.globalState.parentInfo[i].degree +
+                ", ";
+            }
           } else {
-            parentDesignation =
-              parentDesignation +
-              "’" +
-              this.props.globalState.parentInfo[i].year.toString().slice(-2) +
-              " " +
-              this.props.globalState.parentInfo[i].degree +
-              ", ";
+            if (this.props.globalState.parentInfo[i].degree.length > 0) {
+              parentDesignation =
+                parentDesignation +
+                "’" +
+                this.props.globalState.parentInfo[i].year.toString().slice(-2) +
+                " " +
+                this.props.globalState.parentInfo[i].degree +
+                ", ";
+            }
           }
         } else {
-          parentDesignation =
-            parentDesignation +
-            "’" +
-            this.props.globalState.parentInfo[i].year.toString().slice(-2) +
-            " " +
-            this.props.globalState.parentInfo[i].degree;
+          if (this.props.globalState.parentInfo[i].degree.length > 0) {
+            parentDesignation =
+              parentDesignation +
+              "’" +
+              this.props.globalState.parentInfo[i].year.toString().slice(-2) +
+              " " +
+              this.props.globalState.parentInfo[i].degree;
+          } else {
+            parentDesignation = parentDesignation.replace(/,\s*$/, "");
+          }
         }
       }
     }
@@ -220,7 +198,7 @@ export default class Output extends Component {
               color: "#716C6B",
               display: "block",
               width: "100%",
-              maxWidth: "fit-content",
+              maxWidth: "max-content",
             }}
           >
             <tbody>
@@ -236,18 +214,17 @@ export default class Output extends Component {
                 >
                   <strong>
                     {this.props.globalState.firstName}{" "}
-                    {`${
-                      this.props.globalState.middleName.length > 0
-                        ? this.props.globalState.middleName + " "
-                        : ""
-                    }`}
+                    {`${this.props.globalState.middleName.length > 0
+                      ? this.props.globalState.middleName + " "
+                      : ""
+                      }`}
                     {this.props.globalState.lastName}
                     {this.props.globalState.isUndergradAlum &&
-                    undergradDesignation.length > 3
+                      undergradDesignation.length > 3
                       ? undergradDesignation
                       : ""}
                     {this.props.globalState.isGradAlum &&
-                    gradDesignation.length > 5
+                      gradDesignation.length > 5
                       ? gradDesignation
                       : ""}
                     {this.props.globalState.isParentAlum &&
@@ -264,9 +241,10 @@ export default class Output extends Component {
                     color: "#716C6B",
                     paddingTop: "10px",
                     lineHeight: "1.37",
+                    width: "max-content"
                   }}
                 >
-                  {this.props.globalState.pronouns.subject.length > 0 &&
+                  {this.props.globalState.pronouns.length > 0 &&
                     Pronouns}
                   {this.props.globalState.title.length > 0 && Job}
                   <div>
@@ -275,10 +253,14 @@ export default class Output extends Component {
                   <div>
                     <span className="nu">Northwestern University</span>
                   </div>
-                  <div>
-                    <span className="special-msg">
-                      <em>{this.props.globalState.specialMsg}</em>
-                    </span>
+                  <div
+                    className="special-msg"
+                    style={{
+                      whiteSpace: "nowrap",
+                      width: "480px"
+                    }}
+                  >
+                    <em>{this.props.globalState.specialMsg.replace("&#8209;", "–")}</em>
                   </div>
                 </td>
               </tr>
@@ -325,15 +307,6 @@ export default class Output extends Component {
                       style={{
                         color: "#4e2a84",
                       }}
-                      href="https://wewill.northwestern.edu/s/1479/282-giving/index-campaign.aspx?gid=282&pgid=61&utm_medium=email&utm_source=ARD%20email&utm_campaign=ARD%20Email%20Signature"
-                    >
-                      We Will. The Campaign for Northwestern.
-                    </a>{" "}
-                    <br />
-                    <a
-                      style={{
-                        color: "#4e2a84",
-                      }}
                       href="https://www.alumni.northwestern.edu/s/1479/02-naa/16/home.aspx?sid=1479&gid=2&pgid=20761&utm_medium=email&utm_source=ARD%20email&utm_campaign=ARD%20Email%20Signature"
                     >
                       alumni.northwestern.edu
@@ -375,7 +348,6 @@ export default class Output extends Component {
               </tr>
             </tbody>
           </table>
-          {this.props.globalState.isAcknowledgement && landAcknowledgement}
         </div>
       </section>
     );

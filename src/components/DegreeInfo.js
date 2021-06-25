@@ -7,7 +7,8 @@ import {
   TextField,
   IconButton
 } from "@material-ui/core";
-import { DeleteIcon } from "@material-ui/icons";
+import { Delete } from "@material-ui/icons";
+
 
 export default class DegreeInfo extends Component {
   constructor(props) {
@@ -16,6 +17,14 @@ export default class DegreeInfo extends Component {
       degreeType: "",
       classYear: 0
     };
+  }
+
+  typeReturn = () => {
+    if(this.props.gradDegree){
+      return "gradInfo";
+    } else {
+      return "underGradInfo";
+    }
   }
 
   isYearNotZero = () => {
@@ -112,11 +121,15 @@ export default class DegreeInfo extends Component {
             <MenuItem value="PhD" label="Doctor of Philosophy">
               Doctor of Philosophy (PhD)
             </MenuItem>
+            <MenuItem value="CERT" label="Doctor of Philosophy">
+              Certificate (CERT)
+            </MenuItem>
           </Select>
         </FormControl>
       </div>
     );
     return (
+      <>
       <div className="form-step double degree">
         {this.props.gradDegree && GradDegreeType}
         <FormControl className="form-step__field year">
@@ -129,7 +142,7 @@ export default class DegreeInfo extends Component {
             label="Class Year"
             name="year"
             onChange={this.handleChange}
-            error={this.state.classYear != 0 && !this.props.isYearValid}
+            error={this.state.classYear !== 0 && !this.props.isYearValid}
           ></TextField>
           {this.state.classYear != 0 && !this.props.isYearValid && (
             <div className="errorText">
@@ -137,7 +150,16 @@ export default class DegreeInfo extends Component {
             </div>
           )}
         </FormControl>
+        <IconButton
+          onClick={e => this.props.handleRemoveDegree(this.props.arrayID, this.typeReturn())}
+          aria-label="remove degree info"
+          label="test"
+        >
+          <Delete />
+        </IconButton>
       </div>
+      <div className="errorText below">{this.props.errMsg}</div>
+      </>
     );
   }
 }

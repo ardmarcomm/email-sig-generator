@@ -32,6 +32,7 @@ export default class Form extends Component {
             key={index}
             arrayID={index}
             handleDegreeChange={this.props.handleDegreeChange}
+            handleRemoveDegree={this.props.handleRemoveDegree}
             fieldDefaultVals={[
               "",
               this.props.globalState.underGradInfo[index].year,
@@ -54,6 +55,7 @@ export default class Form extends Component {
               this.props.globalState.gradInfo[index].degree,
               this.props.globalState.gradInfo[index].year,
             ]}
+            errMsg={this.props.globalState.gradInfo[index].errMsg}
             gradDegree={true}
             isYearValid={degree.isYearValid}
           />
@@ -138,7 +140,7 @@ export default class Form extends Component {
           </div>
           <div className="form-step">
             <CheckboxStep
-              fieldName="Are You a Northwestern Graduate/Professional Degree Holder?"
+              fieldName="Are You a Northwestern Graduate Degree, Professional Degree, or Certificate Holder?"
               handleAlumToggle={this.props.handleGradAlumToggle}
               isChecked={this.props.globalState.isGradAlum}
             />
@@ -166,11 +168,14 @@ export default class Form extends Component {
           isRequired={[true, true]}
         />
         <h3>Pronouns</h3>
-        <div className="sub-head-helper">Optional</div>
-        <PronounStep
-          fieldName={["subject", "object", "possessive"]}
-          fieldLabel={["Subject", "Object", "Possessive"]}
-          handlePronounChange={this.props.handlePronounChange}
+        <div className="sub-head-helper">Optional (e.g., “she/her/hers,” “he/him/his and they/their/theirs,” etc.)</div>
+        <InputStep
+          fieldName={"pronouns"}
+          fieldLabel={"Pronouns"}
+          fieldDefaultVals={this.props.globalState.pronouns}
+          handleFieldChange={this.props.handleFieldChange}
+          isRequired={false}
+          halfWidth={true}
         />
         <h3>Address</h3>
         <AddressOptions
@@ -199,15 +204,6 @@ export default class Form extends Component {
           fieldDefaultVals={this.props.globalState.specialMsg}
           isRequired={false}
         />
-        <h3>Land Acknowledgement</h3>
-        <div className="sub-head-helper">Optional Land Acknowledgement Message</div>
-        <div className="form-step">
-            <CheckboxStep
-              fieldName="Include land acknowledgement message?"
-              handleAlumToggle={this.props.handleAcknowledgementToggle}
-              isChecked={this.props.isAcknowledgement}
-            />
-          </div>
         {this.props.cantGenerateSig && GenerateSigError}
         <Button handleClick={this.props.handleClick}></Button>
       </article>
