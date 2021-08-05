@@ -70,7 +70,7 @@ export default class Output extends Component {
     const OfficeNum = (
       <span className="office-num">
         <br />
-        {makePhoneNum(this.props.globalState.officePhoneNum)}
+        +1 {makePhoneNum(this.props.globalState.officePhoneNum)}
         {" office"}
       </span>
     );
@@ -78,7 +78,7 @@ export default class Output extends Component {
     const CellNum = (
       <span className="cell-num">
         <br />
-        {makePhoneNum(this.props.globalState.cellPhoneNum)}
+        +1 {makePhoneNum(this.props.globalState.cellPhoneNum)}
         {" cell"}
       </span>
     );
