@@ -168,7 +168,7 @@ export default class Form extends Component {
           isRequired={[true, true]}
         />
         <h3>Pronouns</h3>
-        <div className="sub-head-helper">Optional (e.g., “she/her/hers,” “he/him/his and they/their/theirs,” etc.)</div>
+        <div className="sub-head-helper">Optional (e.g., she/her/hers, he/him/his, and they/their/theirs, etc.)</div>
         <InputStep
           fieldName={"pronouns"}
           fieldLabel={"Pronouns"}
