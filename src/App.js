@@ -34,7 +34,7 @@ class App extends React.Component {
       title: "",
       department: "",
       org: "Alumni Relations and Development",
-      specialMsg: "Commemorating 150 years of women students",
+      specialMsg: "",
       address: "",
       officePhoneNum: "",
       cellPhoneNum: "",

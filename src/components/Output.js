@@ -1,6 +1,12 @@
 import React, { Component } from "react";
 import { Block } from "@material-ui/icons";
 
+// NOTE: the use of style={{display: "inline-block"}} on nearly every element
+// is to make the border line adjust to the longest line in the signature while allowing the table to hit max-width
+
+// If you're feeling bold, the wrap issue might have been caused by special-message div having a fixed width in px
+// but I don't want to go back and delete every inline-block styling when the app works fine like this anyway.
+
 function makePhoneNum(input) {
   var inputArray = input.split("");
   inputArray.splice(3, 0, ".");
@@ -16,6 +22,7 @@ function makeDepartment(input) {
 export default class Output extends Component {
   constructor(props) {
     super(props);
+    // these refs are never used?????
     this.titleRef = React.createRef;
     this.myDep = React.createRef;
     this.state = {
@@ -53,38 +60,38 @@ export default class Output extends Component {
       <span
         className="job"
         style={{
-          display: "block",
+          display: "inline-block"
         }}
       >
-        <div>
-          <span id="title">{myTitle}</span>
+        <div style={{ display: "inline-block"}}>
+          <span id="title" style={{ display: "inline-block"}}>{myTitle}</span>
         </div>
-        <div>
-          <span id="department">
+        <br />
+        <div  style={{ display: "inline-block"}}>
+          <span id="department" style={{ display: "inline-block"}}>
             {makeDepartment(this.props.globalState.department)}
           </span>
         </div>
+        <br />
       </span>
     );
 
     const OfficeNum = (
-      <span className="office-num">
-        <br />
+      <span className="office-num" style={{ display: "inline-block"}}>
         +1 {makePhoneNum(this.props.globalState.officePhoneNum)}
         {" office"}
       </span>
     );
 
     const CellNum = (
-      <span className="cell-num">
-        <br />
+      <span className="cell-num" style={{ display: "inline-block"}}>
         +1 {makePhoneNum(this.props.globalState.cellPhoneNum)}
         {" cell"}
       </span>
     );
 
     const addressStr = (
-      <span className="address">{this.props.globalState.address}</span>
+      <span className="address" style={{ display: "inline-block"}}>{this.props.globalState.address}</span>
     );
 
     var undergradDesignation = "";
@@ -186,102 +193,116 @@ export default class Output extends Component {
 
     return (
       <section className="sig-result">
-        <div className="sig-result__wrapper">
-          <table
-            cellPadding="0"
-            cellSpacing="0"
-            style={{
-              borderTop: "1px solid #4e2a84",
-              borderBottom: "1px solid #4e2a84",
-              fontFamily: '"Arial"',
-              fontSize: "14px",
-              color: "#716C6B",
-              display: "block",
-              width: "100%",
-              maxWidth: "max-content",
-            }}
-          >
-            <tbody>
-              <tr>
-                <td
-                  style={{
-                    fontFamily: '"Arial"',
-                    fontSize: "16px",
-                    color: "#4e2a84",
-                    paddingTop: "10px",
-                    lineHeight: "1.2",
-                  }}
-                >
-                  <strong>
-                    {this.props.globalState.firstName}{" "}
-                    {`${this.props.globalState.middleName.length > 0
-                      ? this.props.globalState.middleName + " "
-                      : ""
-                      }`}
-                    {this.props.globalState.lastName}
-                    {this.props.globalState.isUndergradAlum &&
-                      undergradDesignation.length > 3
-                      ? undergradDesignation
-                      : ""}
-                    {this.props.globalState.isGradAlum &&
-                      gradDesignation.length > 5
-                      ? gradDesignation
-                      : ""}
-                    {this.props.globalState.isParentAlum &&
-                      parentDesignation.length > 5 &&
-                      parentDesignation}
-                  </strong>
-                </td>
-              </tr>
-              <tr>
-                <td
-                  style={{
-                    fontFamily: '"Arial"',
-                    fontSize: "14px",
-                    color: "#716C6B",
-                    paddingTop: "10px",
-                    lineHeight: "1.37",
-                    width: "max-content"
-                  }}
-                >
-                  {this.props.globalState.pronouns.length > 0 &&
-                    Pronouns}
-                  {this.props.globalState.title.length > 0 && Job}
-                  <div>
-                    <span className="org">{this.props.globalState.org}</span>
-                  </div>
-                  <div>
-                    <span className="nu">Northwestern University</span>
-                  </div>
-                  <div
-                    className="special-msg"
+         <div className="sig-result__wrapper" >
+           <div className="table__wrapper" style={{display: "inline-block"}}>
+            <table
+              cellPadding="0"
+              cellSpacing="0"
+              style={{
+                borderTop: "1px solid #4e2a84",
+                borderBottom: "1px solid #4e2a84",
+                fontFamily: '"Arial"',
+                fontSize: "14px",
+                color: "#716C6B",
+                maxWidth: "max-content",
+                display: "inline-block"
+              }}
+            >
+              <tbody  style={{display: "inline-block"}}>
+                <tr style={{display: "inline-block"}}>
+                  <td
                     style={{
-                      whiteSpace: "nowrap",
-                      width: "480px"
+                      fontFamily: '"Arial"',
+                      fontSize: "16px",
+                      color: "#4e2a84",
+                      paddingTop: "10px",
+                      lineHeight: "1.2",
+                      display: "inline-block"
                     }}
                   >
-                    <em>{this.props.globalState.specialMsg.replace("&#8209;", "–")}</em>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td
-                  style={{
-                    fontFamily: '"Arial"',
-                    fontSize: "14px",
-                    color: "#716C6B",
-                    paddingTop: "10px",
-                    paddingBottom: "30px",
-                    lineHeight: "1.37",
-                  }}
-                >
-                  {this.props.globalState.address != "None" && addressStr}
-                  {this.props.globalState.phoneNumValidity.office && OfficeNum}
-                  {this.props.globalState.phoneNumValidity.cell && CellNum}
-                </td>
-              </tr>
-            </tbody>
-          </table>
+                    <strong>
+                      {this.props.globalState.firstName}{" "}
+                      {`${this.props.globalState.middleName.length > 0
+                        ? this.props.globalState.middleName + " "
+                        : ""
+                        }`}
+                      {this.props.globalState.lastName}
+                      {this.props.globalState.isUndergradAlum &&
+                        undergradDesignation.length > 3
+                        ? undergradDesignation
+                        : ""}
+                      {this.props.globalState.isGradAlum &&
+                        gradDesignation.length > 5
+                        ? gradDesignation
+                        : ""}
+                      {this.props.globalState.isParentAlum &&
+                        parentDesignation.length > 5 &&
+                        parentDesignation}
+                    </strong>
+                  </td>
+                </tr>
+                <br />
+                <tr  style={{display: "inline-block"}}>
+                  <td
+                    style={{
+                      fontFamily: '"Arial"',
+                      fontSize: "14px",
+                      color: "#716C6B",
+                      paddingTop: "10px",
+                      lineHeight: "1.37",
+                      width: "max-content",
+                      display: "inline-block"
+                    }}
+                  >
+                    {this.props.globalState.pronouns.length > 0 &&
+                      Pronouns}
+                      <br />
+                    {this.props.globalState.title.length > 0 && Job}
+                    <br />
+                    <div style={{display: "inline-block"}}>
+                      <span className="org" style={{display: "inline-block"}}>{this.props.globalState.org}</span>
+                    </div>
+                    <br />
+                    <div style={{display: "inline-block"}}>
+                      <span className="nu" style={{display: "inline-block"}}>Northwestern University</span>
+                    </div>
+                    <div
+                      className="special-msg"
+                      style={{
+                        whiteSpace: "nowrap",
+                        // width: "480px",
+                        display: "inline-block"
+                      }}
+                    >
+                      <em style={{ display: "inline-block"}}>{
+                        this.props.globalState.specialMsg === "" ? this.props.globalState.specialMsg.replace("&#8209;", "–") : " "
+                      }</em>
+                    </div>
+                  </td>
+                </tr>
+                <br />
+                <tr style={{display: "inline-block"}}>
+                  <td
+                    style={{
+                      fontFamily: '"Arial"',
+                      fontSize: "14px",
+                      color: "#716C6B",
+                      paddingTop: "10px",
+                      paddingBottom: "30px",
+                      lineHeight: "1.37",
+                      display: "inline-block"
+                    }}
+                  >
+                    {this.props.globalState.address != "None" && addressStr}
+                    <div></div>
+                    {this.props.globalState.phoneNumValidity.office && OfficeNum}
+                    <div />
+                    {this.props.globalState.phoneNumValidity.cell && CellNum}
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
           <table
             cellPadding="0"
             cellSpacing="0"
@@ -308,8 +329,31 @@ export default class Output extends Component {
                         color: "#4e2a84",
                       }}
                       href="https://www.alumni.northwestern.edu/s/1479/02-naa/16/home.aspx?sid=1479&gid=2&pgid=20761&utm_medium=email&utm_source=ARD%20email&utm_campaign=ARD%20Email%20Signature"
+                      target="_blank"
                     >
                       alumni.northwestern.edu
+                    </a>
+                  </strong>
+                </td>
+              </tr>
+              <tr>
+                <td style={{
+                    fontFamily: '"Arial"',
+                    fontSize: "14px",
+                    color: "#4e2a84",
+                    paddingTop: "10px",
+                    lineHeight: "1.37",
+                  }}
+                >
+                  <strong>
+                    <a
+                      style={{
+                        color: "#4e2a84",
+                      }}
+                      href="https://www.northwestern.edu/giving/" 
+                      target="_blank"
+                    >
+                      giving.northwestern.edu
                     </a>
                   </strong>
                 </td>
@@ -348,7 +392,7 @@ export default class Output extends Component {
               </tr>
             </tbody>
           </table>
-        </div>
+         </div>
       </section>
     );
   }
