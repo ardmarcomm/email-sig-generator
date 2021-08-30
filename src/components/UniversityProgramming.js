@@ -4,11 +4,8 @@ import {
   Select,
   MenuItem,
   InputLabel,
-  TextField,
-  IconButton,
 } from "@material-ui/core";
 import Papa from "papaparse";
-import { DeleteIcon } from "@material-ui/icons";
 const csvURL =
   "https://s3.us-east-2.amazonaws.com/assets.ard.northwestern.edu/files/email-sig-generator/university-specific-programming-messages.csv";
 

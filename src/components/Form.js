@@ -1,12 +1,10 @@
 import React, { Component } from "react";
-import ReactDOM from "react-dom";
 import DoubleInputStep from "./DoubleInputStep";
 import InputStep from "./InputStep";
 import Button from "./Button";
 import CheckboxStep from "./CheckboxStep";
 import DegreeInfo from "./DegreeInfo";
 import ParentInfo from "./ParentInfo";
-import PronounStep from "./PronounStep";
 import AddressOptions from "./AddressOptions";
 import UniversityProgramming from "./UniversityProgramming"; 
 import IconButton from "@material-ui/core/IconButton";
