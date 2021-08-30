@@ -4,10 +4,7 @@ import {
   Select,
   MenuItem,
   InputLabel,
-  TextField,
-  IconButton,
 } from "@material-ui/core";
-import { DeleteIcon } from "@material-ui/icons";
 
 export default class AddressOptions extends Component {
   constructor(props) {

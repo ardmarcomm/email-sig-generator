@@ -35,5 +35,6 @@ jobs:
         # blank string because apparently false doesn't work and we want to ignore react warnings
         CI: ""
       run: |
+        git config --global user.email "ardsocial@northwestern.edu"
         npm run predeploy
         npm run deploy
