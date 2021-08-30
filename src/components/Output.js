@@ -1,11 +1,6 @@
 import React, { Component } from "react";
 import { Block } from "@material-ui/icons";
 
-// NOTE: the use of style={{display: "inline-block"}} on nearly every element
-// is to make the border line adjust to the longest line in the signature while allowing the table to hit max-width
-
-// If you're feeling bold, the wrap issue might have been caused by special-message div having a fixed width in px
-// but I don't want to go back and delete every inline-block styling when the app works fine like this anyway.
 
 function makePhoneNum(input) {
   var inputArray = input.split("");
@@ -57,41 +52,36 @@ export default class Output extends Component {
     myTitle = titleArray.join("\xa0");
 
     const Job = (
-      <span
-        className="job"
-        style={{
-          display: "inline-block"
-        }}
-      >
-        <div style={{ display: "inline-block"}}>
-          <span id="title" style={{ display: "inline-block"}}>{myTitle}</span>
+      <span className="job">
+        <div>
+          <span id="title">{myTitle}</span>
         </div>
-        <br />
-        <div  style={{ display: "inline-block"}}>
-          <span id="department" style={{ display: "inline-block"}}>
+        <div>
+          <span id="department">
             {makeDepartment(this.props.globalState.department)}
           </span>
         </div>
-        <br />
       </span>
     );
 
     const OfficeNum = (
-      <span className="office-num" style={{ display: "inline-block"}}>
+      <span className="office-num">
+        <br />
         +1 {makePhoneNum(this.props.globalState.officePhoneNum)}
         {" office"}
       </span>
     );
 
     const CellNum = (
-      <span className="cell-num" style={{ display: "inline-block"}}>
+      <span className="cell-num">
+        <br />
         +1 {makePhoneNum(this.props.globalState.cellPhoneNum)}
         {" cell"}
       </span>
     );
 
     const addressStr = (
-      <span className="address" style={{ display: "inline-block"}}>{this.props.globalState.address}</span>
+      <span className="address">{this.props.globalState.address}</span>
     );
 
     var undergradDesignation = "";
@@ -194,7 +184,6 @@ export default class Output extends Component {
     return (
       <section className="sig-result">
          <div className="sig-result__wrapper" >
-           <div className="table__wrapper" style={{display: "inline-block"}}>
             <table
               cellPadding="0"
               cellSpacing="0"
@@ -205,11 +194,10 @@ export default class Output extends Component {
                 fontSize: "14px",
                 color: "#716C6B",
                 maxWidth: "max-content",
-                display: "inline-block"
               }}
             >
-              <tbody  style={{display: "inline-block"}}>
-                <tr style={{display: "inline-block"}}>
+              <tbody>
+                <tr>
                   <td
                     style={{
                       fontFamily: '"Arial"',
@@ -217,7 +205,6 @@ export default class Output extends Component {
                       color: "#4e2a84",
                       paddingTop: "10px",
                       lineHeight: "1.2",
-                      display: "inline-block"
                     }}
                   >
                     <strong>
@@ -241,8 +228,7 @@ export default class Output extends Component {
                     </strong>
                   </td>
                 </tr>
-                <br />
-                <tr  style={{display: "inline-block"}}>
+                <tr>
                   <td
                     style={{
                       fontFamily: '"Arial"',
@@ -251,37 +237,31 @@ export default class Output extends Component {
                       paddingTop: "10px",
                       lineHeight: "1.37",
                       width: "max-content",
-                      display: "inline-block"
                     }}
                   >
                     {this.props.globalState.pronouns.length > 0 &&
                       Pronouns}
-                      <br />
                     {this.props.globalState.title.length > 0 && Job}
-                    <br />
-                    <div style={{display: "inline-block"}}>
-                      <span className="org" style={{display: "inline-block"}}>{this.props.globalState.org}</span>
+                    <div>
+                      <span className="org">{this.props.globalState.org}</span>
                     </div>
-                    <br />
-                    <div style={{display: "inline-block"}}>
-                      <span className="nu" style={{display: "inline-block"}}>Northwestern University</span>
+                    <div>
+                      <span className="nu">Northwestern University</span>
                     </div>
                     <div
                       className="special-msg"
                       style={{
                         whiteSpace: "nowrap",
                         // width: "480px",
-                        display: "inline-block"
                       }}
                     >
-                      <em style={{ display: "inline-block"}}>{
+                      <em>{
                         this.props.globalState.specialMsg === "" ? this.props.globalState.specialMsg.replace("&#8209;", "–") : " "
                       }</em>
                     </div>
                   </td>
                 </tr>
-                <br />
-                <tr style={{display: "inline-block"}}>
+                <tr>
                   <td
                     style={{
                       fontFamily: '"Arial"',
@@ -290,13 +270,10 @@ export default class Output extends Component {
                       paddingTop: "10px",
                       paddingBottom: "30px",
                       lineHeight: "1.37",
-                      display: "inline-block"
                     }}
                   >
                     {this.props.globalState.address != "None" && addressStr}
-                    <div></div>
                     {this.props.globalState.phoneNumValidity.office && OfficeNum}
-                    <div />
                     {this.props.globalState.phoneNumValidity.cell && CellNum}
                   </td>
                 </tr>
@@ -392,7 +369,6 @@ export default class Output extends Component {
               </tr>
             </tbody>
           </table>
-         </div>
       </section>
     );
   }
