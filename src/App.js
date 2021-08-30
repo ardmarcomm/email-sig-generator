@@ -238,7 +238,7 @@ class App extends React.Component {
           </p>
           <p>
             You may copy and paste your new signature into your email template. For further instructions on how to set a signature on Outlook, follow&nbsp;
-            <a target="_blank" href="https://support.office.com/en-us/article/create-and-add-a-signature-to-messages-8ee5d4f4-68fd-464a-a1c1-0e1c80bb27f2">
+            <a target="_blank" rel="noopener noreferrer" href="https://support.office.com/en-us/article/create-and-add-a-signature-to-messages-8ee5d4f4-68fd-464a-a1c1-0e1c80bb27f2">
             this guide
             </a>
             .
