@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Block } from "@material-ui/icons";
 
+
 function makePhoneNum(input) {
   var inputArray = input.split("");
   inputArray.splice(3, 0, ".");
@@ -16,6 +17,7 @@ function makeDepartment(input) {
 export default class Output extends Component {
   constructor(props) {
     super(props);
+    // these refs are never used?????
     this.titleRef = React.createRef;
     this.myDep = React.createRef;
     this.state = {
@@ -50,12 +52,7 @@ export default class Output extends Component {
     myTitle = titleArray.join("\xa0");
 
     const Job = (
-      <span
-        className="job"
-        style={{
-          display: "block",
-        }}
-      >
+      <span className="job">
         <div>
           <span id="title">{myTitle}</span>
         </div>
@@ -108,7 +105,6 @@ export default class Output extends Component {
             if (this.props.globalState.gradInfo[i].degree.length > 0) {
               gradDesignation =
                 gradDesignation +
-                ", " +
                 "’" +
                 this.props.globalState.gradInfo[i].year.toString().slice(-2) +
                 " " +
@@ -186,102 +182,103 @@ export default class Output extends Component {
 
     return (
       <section className="sig-result">
-        <div className="sig-result__wrapper">
-          <table
-            cellPadding="0"
-            cellSpacing="0"
-            style={{
-              borderTop: "1px solid #4e2a84",
-              borderBottom: "1px solid #4e2a84",
-              fontFamily: '"Arial"',
-              fontSize: "14px",
-              color: "#716C6B",
-              display: "block",
-              width: "100%",
-              maxWidth: "max-content",
-            }}
-          >
-            <tbody>
-              <tr>
-                <td
-                  style={{
-                    fontFamily: '"Arial"',
-                    fontSize: "16px",
-                    color: "#4e2a84",
-                    paddingTop: "10px",
-                    lineHeight: "1.2",
-                  }}
-                >
-                  <strong>
-                    {this.props.globalState.firstName}{" "}
-                    {`${this.props.globalState.middleName.length > 0
-                      ? this.props.globalState.middleName + " "
-                      : ""
-                      }`}
-                    {this.props.globalState.lastName}
-                    {this.props.globalState.isUndergradAlum &&
-                      undergradDesignation.length > 3
-                      ? undergradDesignation
-                      : ""}
-                    {this.props.globalState.isGradAlum &&
-                      gradDesignation.length > 5
-                      ? gradDesignation
-                      : ""}
-                    {this.props.globalState.isParentAlum &&
-                      parentDesignation.length > 5 &&
-                      parentDesignation}
-                  </strong>
-                </td>
-              </tr>
-              <tr>
-                <td
-                  style={{
-                    fontFamily: '"Arial"',
-                    fontSize: "14px",
-                    color: "#716C6B",
-                    paddingTop: "10px",
-                    lineHeight: "1.37",
-                    width: "max-content"
-                  }}
-                >
-                  {this.props.globalState.pronouns.length > 0 &&
-                    Pronouns}
-                  {this.props.globalState.title.length > 0 && Job}
-                  <div>
-                    <span className="org">{this.props.globalState.org}</span>
-                  </div>
-                  <div>
-                    <span className="nu">Northwestern University</span>
-                  </div>
-                  <div
-                    className="special-msg"
+         <div className="sig-result__wrapper" >
+            <table
+              cellPadding="0"
+              cellSpacing="0"
+              style={{
+                borderTop: "1px solid #4e2a84",
+                borderBottom: "1px solid #4e2a84",
+                fontFamily: '"Arial"',
+                fontSize: "14px",
+                color: "#716C6B",
+                maxWidth: "max-content",
+              }}
+            >
+              <tbody>
+                <tr>
+                  <td
                     style={{
-                      whiteSpace: "nowrap",
-                      width: "480px"
+                      fontFamily: '"Arial"',
+                      fontSize: "16px",
+                      color: "#4e2a84",
+                      paddingTop: "10px",
+                      lineHeight: "1.2",
                     }}
                   >
-                    <em>{this.props.globalState.specialMsg.replace("&#8209;", "–")}</em>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td
-                  style={{
-                    fontFamily: '"Arial"',
-                    fontSize: "14px",
-                    color: "#716C6B",
-                    paddingTop: "10px",
-                    paddingBottom: "30px",
-                    lineHeight: "1.37",
-                  }}
-                >
-                  {this.props.globalState.address != "None" && addressStr}
-                  {this.props.globalState.phoneNumValidity.office && OfficeNum}
-                  {this.props.globalState.phoneNumValidity.cell && CellNum}
-                </td>
-              </tr>
-            </tbody>
-          </table>
+                    <strong>
+                      {this.props.globalState.firstName}{" "}
+                      {`${this.props.globalState.middleName.length > 0
+                        ? this.props.globalState.middleName + " "
+                        : ""
+                        }`}
+                      {this.props.globalState.lastName}
+                      {this.props.globalState.isUndergradAlum &&
+                        undergradDesignation.length > 3
+                        ? undergradDesignation
+                        : ""}
+                      {this.props.globalState.isGradAlum &&
+                        gradDesignation.length > 5
+                        ? gradDesignation
+                        : ""}
+                      {this.props.globalState.isParentAlum &&
+                        parentDesignation.length > 5 &&
+                        parentDesignation}
+                    </strong>
+                  </td>
+                </tr>
+                <tr>
+                  <td
+                    style={{
+                      fontFamily: '"Arial"',
+                      fontSize: "14px",
+                      color: "#716C6B",
+                      paddingTop: "10px",
+                      lineHeight: "1.37",
+                      width: "max-content",
+                    }}
+                  >
+                    {this.props.globalState.pronouns.length > 0 &&
+                      Pronouns}
+                    {this.props.globalState.title.length > 0 && Job}
+                    <div>
+                      <span className="org">{this.props.globalState.org}</span>
+                    </div>
+                    <div>
+                      <span className="nu">Northwestern University</span>
+                    </div>
+                    <div
+                      className="special-msg"
+                      style={{
+                        whiteSpace: "nowrap",
+                        // width: "480px",
+                      }}
+                    >
+                      <em>{
+                        this.props.globalState.specialMsg === "" ? this.props.globalState.specialMsg.replace("&#8209;", "–") : " "
+                      }</em>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td
+                    style={{
+                      fontFamily: '"Arial"',
+                      fontSize: "14px",
+                      color: "#716C6B",
+                      paddingTop: "10px",
+                      paddingBottom: "30px",
+                      lineHeight: "1.37",
+                    }}
+                  >
+                    {this.props.globalState.address != "None" && addressStr}
+                    {this.props.globalState.phoneNumValidity.office && OfficeNum}
+                    {this.props.globalState.phoneNumValidity.cell && CellNum}
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
           <table
             cellPadding="0"
             cellSpacing="0"
@@ -308,8 +305,31 @@ export default class Output extends Component {
                         color: "#4e2a84",
                       }}
                       href="https://www.alumni.northwestern.edu/s/1479/02-naa/16/home.aspx?sid=1479&gid=2&pgid=20761&utm_medium=email&utm_source=ARD%20email&utm_campaign=ARD%20Email%20Signature"
+                      target="_blank"
                     >
                       alumni.northwestern.edu
+                    </a>
+                  </strong>
+                </td>
+              </tr>
+              <tr>
+                <td style={{
+                    fontFamily: '"Arial"',
+                    fontSize: "14px",
+                    color: "#4e2a84",
+                    paddingTop: "10px",
+                    lineHeight: "1.37",
+                  }}
+                >
+                  <strong>
+                    <a
+                      style={{
+                        color: "#4e2a84",
+                      }}
+                      href="https://www.northwestern.edu/giving/" 
+                      target="_blank"
+                    >
+                      giving.northwestern.edu
                     </a>
                   </strong>
                 </td>
@@ -348,7 +368,6 @@ export default class Output extends Component {
               </tr>
             </tbody>
           </table>
-        </div>
       </section>
     );
   }

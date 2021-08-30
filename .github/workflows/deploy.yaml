@@ -1,0 +1,36 @@
+name: Deploy
+
+on:
+  push:
+    branches: [ main ]
+
+concurrency:
+  group: environment-${{ github.ref }}
+
+jobs:
+  test-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        ref: ${{ github.head_ref }}
+    
+    - name: Setup NodeJS 😞
+      uses: actions/setup-node@v2
+      with:
+        node-version: 12.x
+    
+    - uses: actions/cache@v2.1.6
+      with:
+        path: 'node_modules'
+        key: ${{ runner.os }}-yarn-${{ hashFiles('**/package-lock.json') }}
+
+    - name: Install dependencies 🔧
+      run: |
+        npm install
+
+    - name: Deploy App 🚀
+      run: |
+        npm run predeploy
+        npm run deploy
