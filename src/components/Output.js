@@ -105,7 +105,6 @@ export default class Output extends Component {
             if (this.props.globalState.gradInfo[i].degree.length > 0) {
               gradDesignation =
                 gradDesignation +
-                ", " +
                 "’" +
                 this.props.globalState.gradInfo[i].year.toString().slice(-2) +
                 " " +
