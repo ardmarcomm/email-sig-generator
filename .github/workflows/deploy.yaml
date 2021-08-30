@@ -30,11 +30,8 @@ jobs:
       run: |
         npm install
 
-    - name: Deploy App 🚀
-      env:
-        # blank string because apparently false doesn't work and we want to ignore react warnings
-        CI: ""
-      run: |
-        git config --global user.email "ardsocial@northwestern.edu"
-        npm run predeploy
-        npm run deploy
+    - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@4.1.4
+        with:
+          branch: gh-pages # The branch the action should deploy to.
+          folder: build # The folder the action should deploy.
