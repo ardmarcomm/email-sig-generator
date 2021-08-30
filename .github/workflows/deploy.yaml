@@ -30,9 +30,9 @@ jobs:
       run: |
         npm install
 
-    - name: Build App
+    - name: Build App 
       env:
-        # ignore react warnings
+        # blank string because apparently false doesn't work and we want to ignore react warnings
         CI: ""
       run: |
         npm run build
