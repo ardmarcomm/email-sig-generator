@@ -144,7 +144,7 @@ export default class DegreeInfo extends Component {
             onChange={this.handleChange}
             error={this.state.classYear !== 0 && !this.props.isYearValid}
           ></TextField>
-          {this.state.classYear != 0 && !this.props.isYearValid && (
+          {this.state.classYear !== 0 && !this.props.isYearValid && (
             <div className="errorText">
               * Year must be between 1934 and 2026
             </div>

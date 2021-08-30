@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Block } from "@material-ui/icons";
 
 
 function makePhoneNum(input) {
@@ -271,7 +270,7 @@ export default class Output extends Component {
                       lineHeight: "1.37",
                     }}
                   >
-                    {this.props.globalState.address != "None" && addressStr}
+                    {this.props.globalState.address !== "None" && addressStr}
                     {this.props.globalState.phoneNumValidity.office && OfficeNum}
                     {this.props.globalState.phoneNumValidity.cell && CellNum}
                   </td>
@@ -306,6 +305,7 @@ export default class Output extends Component {
                       }}
                       href="https://www.alumni.northwestern.edu/s/1479/02-naa/16/home.aspx?sid=1479&gid=2&pgid=20761&utm_medium=email&utm_source=ARD%20email&utm_campaign=ARD%20Email%20Signature"
                       target="_blank"
+                      rel="noopener noreferrer"
                     >
                       alumni.northwestern.edu
                     </a>
@@ -328,6 +328,7 @@ export default class Output extends Component {
                       }}
                       href="https://www.northwestern.edu/giving/" 
                       target="_blank"
+                      rel="noopener noreferrer"
                     >
                       giving.northwestern.edu
                     </a>

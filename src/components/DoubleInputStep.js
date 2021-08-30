@@ -31,11 +31,11 @@ export default class DoubleInputField extends Component {
             label={this.props.fieldLabel[0]}
             onChange={this.handleChange}
             error={
-              this.state.officePhoneNum != 0 &&
+              this.state.officePhoneNum !== 0 &&
               !this.props.phoneNumValidity.office
             }
           />
-          {this.state.officePhoneNum != 0 &&
+          {this.state.officePhoneNum !== 0 &&
             !this.props.phoneNumValidity.office && (
               <div className="errorText">* Must be 10 digit phone number (no hyphens, or special characters)</div>
             )}
@@ -51,10 +51,10 @@ export default class DoubleInputField extends Component {
             label={this.props.fieldLabel[1]}
             onChange={this.handleChange}
             error={
-              this.state.cellPhoneNum != 0 && !this.props.phoneNumValidity.cell
+              this.state.cellPhoneNum !== 0 && !this.props.phoneNumValidity.cell
             }
           />
-          {this.state.cellPhoneNum != 0 &&
+          {this.state.cellPhoneNum !== 0 &&
             !this.props.phoneNumValidity.cell && (
               <div className="errorText">* Must be 10 digit phone number (no hyphens, or special characters)</div>
             )}
