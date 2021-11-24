@@ -57,7 +57,7 @@ export default class AddressOptions extends Component {
                 value="1270 Avenue of the Americas, Suite 2004, New York, New York 10020"
                 label="1270 Avenue of the Americas, Suite 2004, New York, New York 10020"
               >
-                10 Rockefeller Plaza, Suite 800, New York, New York 10020
+                1270 Avenue of the Americas, Suite 2004, New York, New York 10020
               </MenuItem>
               <MenuItem
                 value="44 Montgomery Street, Suite 1800, San Francisco, California 94104"
