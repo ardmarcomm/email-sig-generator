@@ -326,7 +326,7 @@ export default class Output extends Component {
                       style={{
                         color: "#4e2a84",
                       }}
-                      href="https://www.northwestern.edu/giving/" 
+                      href="https://www.giving.northwestern.edu" 
                       target="_blank"
                       rel="noopener noreferrer"
                     >
