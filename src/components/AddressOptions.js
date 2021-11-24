@@ -54,8 +54,8 @@ export default class AddressOptions extends Component {
                 1800 Sheridan Road, Evanston, Illinois 60208
               </MenuItem>
               <MenuItem
-                value="10 Rockefeller Plaza, Suite 800, New York, New York 10020"
-                label="10 Rockefeller Plaza, Suite 800, New York, New York 10020"
+                value="1270 Avenue of the Americas, Suite 2004, New York, New York 10020"
+                label="1270 Avenue of the Americas, Suite 2004, New York, New York 10020"
               >
                 10 Rockefeller Plaza, Suite 800, New York, New York 10020
               </MenuItem>
