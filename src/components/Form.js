@@ -6,7 +6,7 @@ import CheckboxStep from "./CheckboxStep";
 import DegreeInfo from "./DegreeInfo";
 import ParentInfo from "./ParentInfo";
 import AddressOptions from "./AddressOptions";
-import UniversityProgramming from "./UniversityProgramming"; 
+import UniversityProgramming from "./UniversityProgramming";
 import IconButton from "@material-ui/core/IconButton";
 import AddIcon from "@material-ui/icons/AddBoxOutlined";
 
@@ -15,7 +15,7 @@ export default class Form extends Component {
     super();
     this.state = {
       firstNameDefault: "",
-      lastNameDefault: "",
+      lastNameDefault: ""
     };
   }
 
@@ -33,7 +33,7 @@ export default class Form extends Component {
             handleRemoveDegree={this.props.handleRemoveDegree}
             fieldDefaultVals={[
               "",
-              this.props.globalState.underGradInfo[index].year,
+              this.props.globalState.underGradInfo[index].year
             ]}
             gradDegree={false}
             isYearValid={degree.isYearValid}
@@ -51,7 +51,7 @@ export default class Form extends Component {
             handleDegreeChange={this.props.handleDegreeChange}
             fieldDefaultVals={[
               this.props.globalState.gradInfo[index].degree,
-              this.props.globalState.gradInfo[index].year,
+              this.props.globalState.gradInfo[index].year
             ]}
             errMsg={this.props.globalState.gradInfo[index].errMsg}
             gradDegree={true}
@@ -81,7 +81,7 @@ export default class Form extends Component {
             handleDegreeChange={this.props.handleDegreeChange}
             fieldDefaultVals={[
               this.props.globalState.parentInfo[index].degree,
-              this.props.globalState.parentInfo[index].year,
+              this.props.globalState.parentInfo[index].year
             ]}
             isYearValid={degree.isYearValid}
           />
@@ -114,7 +114,7 @@ export default class Form extends Component {
           handleFieldChange={this.props.handleFieldChange}
           fieldDefaultVals={[
             this.props.globalState.firstName,
-            this.props.globalState.lastName,
+            this.props.globalState.lastName
           ]}
           isRequired={[true, true]}
         />
@@ -160,13 +160,15 @@ export default class Form extends Component {
           handleFieldChange={this.props.handleFieldChange}
           fieldDefaultVals={[
             this.props.globalState.title,
-            this.props.globalState.department,
+            this.props.globalState.department
           ]}
           autoComplete={true}
           isRequired={[true, true]}
         />
         <h3>Pronouns</h3>
-        <div className="sub-head-helper">Optional (e.g., she/her/hers, he/him/his, and they/their/theirs, etc.)</div>
+        <div className="sub-head-helper">
+          Optional (e.g., she/her/hers, he/him/his, and they/their/theirs, etc.)
+        </div>
         <InputStep
           fieldName={"pronouns"}
           fieldLabel={"Pronouns"}
@@ -189,19 +191,30 @@ export default class Form extends Component {
           handleFieldChange={this.props.handleFieldChange}
           fieldDefaultVals={[
             this.props.globalState.officePhoneNum,
-            this.props.globalState.cellPhoneNum,
+            this.props.globalState.cellPhoneNum
           ]}
           autoComplete={false}
           phoneNumValidity={this.props.phoneNumValidity}
           isRequired={[true, false]}
         />
-        <h3>University-Specific Programming</h3>
+        {/* <h3>University-Specific Programming</h3>
         <div className="sub-head-helper">Optional Programming Message</div>
         <UniversityProgramming
           handleFieldChange={this.props.handleFieldChange}
           fieldDefaultVals={this.props.globalState.specialMsg}
           isRequired={false}
-        />
+        /> */}
+        <h3>Land Acknowledgment</h3>
+        <div className="sub-head-helper">
+          Optional Land Acknowledgment Message
+        </div>
+        <div className="form-step">
+          <CheckboxStep
+            fieldName="Include land acknowledgment message?"
+            handleAlumToggle={this.props.handleAcknowledgementToggle}
+            isChecked={this.props.isAcknowledgement}
+          />
+        </div>
         {this.props.cantGenerateSig && GenerateSigError}
         <Button handleClick={this.props.handleClick}></Button>
       </article>
