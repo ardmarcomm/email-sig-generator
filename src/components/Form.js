@@ -66,7 +66,7 @@ export default class Form extends Component {
           >
             <AddIcon />
           </IconButton>
-          Add Northwestern Degree
+          Add another
         </div>
       </div>
     );
@@ -127,10 +127,11 @@ export default class Form extends Component {
           halfWidth={true}
         />
         <h3>Alumni Designation</h3>
+        <p>Check all that apply</p>
         <div className="checkboxes">
           <div className="form-step">
             <CheckboxStep
-              fieldName="Are You a Northwestern Undergraduate Alum?"
+              fieldName="Northwestern Undergraduate Alum"
               handleAlumToggle={this.props.handleUndergradAlumToggle}
               isChecked={this.props.globalState.isUndergradAlum}
             />
@@ -138,7 +139,7 @@ export default class Form extends Component {
           </div>
           <div className="form-step">
             <CheckboxStep
-              fieldName="Are You a Northwestern Graduate Degree, Professional Degree, or Certificate Holder?"
+              fieldName="Northwestern Graduate Degree, Professional Degree, or Certificate Holder"
               handleAlumToggle={this.props.handleGradAlumToggle}
               isChecked={this.props.globalState.isGradAlum}
             />
@@ -146,7 +147,7 @@ export default class Form extends Component {
           </div>
           <div className="form-step">
             <CheckboxStep
-              fieldName="Are You the Parent/Grandparent of a Northwestern Student or Graduate?"
+              fieldName="Parent/Grandparent of a Northwestern Student or Graduate"
               handleAlumToggle={this.props.handleParentAlumToggle}
               isChecked={this.props.globalState.isParentAlum}
             />
@@ -210,10 +211,25 @@ export default class Form extends Component {
         </div>
         <div className="form-step">
           <CheckboxStep
-            fieldName="Include land acknowledgment message?"
+            fieldName="Check if you would like to include Northwestern’s land acknowledgment in your email signature (optional)"
             handleAlumToggle={this.props.handleAcknowledgementToggle}
             isChecked={this.props.isAcknowledgement}
           />
+          <p>
+            A land acknowledgment is a formal statement that recognizes and
+            respects Indigenous peoples as traditional stewards of this land and
+            the enduring relationship that exists between Indigenous peoples and
+            their traditional territories. To recognize the land is an
+            expression of gratitude and appreciation to those whose territory
+            you reside on, and a way of honoring the Indigenous people who have
+            been living and working on the land from time immemorial. ARD staff
+            may choose to include Northwestern’s land acknowledgment in their
+            email signatures. Learn more about the land acknowledgment{" "}
+            <a href="http://northwestern.edu/native-american-and-indigenous-peoples/about/Land%20Acknowledgement.html">
+              here
+            </a>
+            .
+          </p>
         </div>
         {this.props.cantGenerateSig && GenerateSigError}
         <Button handleClick={this.props.handleClick}></Button>
