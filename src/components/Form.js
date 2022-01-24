@@ -127,7 +127,7 @@ export default class Form extends Component {
           halfWidth={true}
         />
         <h3>Alumni Designation</h3>
-        <p>Check all that apply</p>
+        <div className="sub-head-helper">Check all that apply</div>
         <div className="checkboxes">
           <div className="form-step">
             <CheckboxStep
