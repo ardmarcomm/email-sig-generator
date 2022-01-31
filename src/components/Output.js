@@ -97,7 +97,8 @@ export default class Output extends Component {
                 fontFamily: '"Arial',
                 fontSize: "12px",
                 color: "#716C6B",
-                paddingTop: "20px"
+                paddingTop: "20px",
+                lineHeight: "1.4"
               }}
             >
               The Northwestern campus sits on the traditional homelands of the
@@ -312,13 +313,15 @@ export default class Output extends Component {
             </tbody>
           </table>
         </div>
+        <br />
         <table
           cellPadding="0"
           cellSpacing="0"
           style={{
             fontFamily: '"Arial"',
             fontSize: "14px",
-            color: "#716C6B"
+            color: "#716C6B",
+            marginTop: "0px"
           }}
         >
           <tbody>
