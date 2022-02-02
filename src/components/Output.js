@@ -97,14 +97,19 @@ export default class Output extends Component {
                 fontFamily: '"Arial',
                 fontSize: "12px",
                 color: "#716C6B",
-                paddingTop: "20px",
-                lineHeight: "1.4"
+                paddingTop: "15px",
+                lineHeight: "1.4",
+                maxWidth: "400px"
               }}
             >
               The Northwestern campus sits on the traditional homelands of the
               people of the Council of Three Fires (the Ojibwe, Potawatomi, and
-              Odawa), as well as the Menominee, Miami, and Ho-Chunk nations.{" "}
-              <a href="https://www.northwestern.edu/native-american-and-indigenous-peoples/about/Land%20Acknowledgement.html">
+              Odawa), as well as the Menominee, Miami, and Ho&#8209;Chunk
+              nations.{" "}
+              <a
+                style={{ color: "#716C6B" }}
+                href="https://www.northwestern.edu/native-american-and-indigenous-peoples/about/Land%20Acknowledgement.html"
+              >
                 Learn more
               </a>
               .
@@ -301,7 +306,7 @@ export default class Output extends Component {
                     fontSize: "14px",
                     color: "#716C6B",
                     paddingTop: "10px",
-                    paddingBottom: "30px",
+                    paddingBottom: "20px",
                     lineHeight: "1.37"
                   }}
                 >
@@ -313,7 +318,8 @@ export default class Output extends Component {
             </tbody>
           </table>
         </div>
-        <br />
+        {/* <br /> */}
+        <p style={{ fontSize: "1px", margin: "0px", padding: "0px" }}>&nbsp;</p>
         <table
           cellPadding="0"
           cellSpacing="0"
@@ -321,7 +327,7 @@ export default class Output extends Component {
             fontFamily: '"Arial"',
             fontSize: "14px",
             color: "#716C6B",
-            marginTop: "0px"
+            marginTop: "10px"
           }}
         >
           <tbody>
@@ -331,7 +337,7 @@ export default class Output extends Component {
                   fontFamily: '"Arial"',
                   fontSize: "14px",
                   color: "#4e2a84",
-                  paddingTop: "10px",
+                  paddingTop: "5px",
                   lineHeight: "1.37"
                 }}
               >
