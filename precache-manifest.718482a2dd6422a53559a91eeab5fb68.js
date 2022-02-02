@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "785a8eabb6e8f0586ca64e9996e5dc20",
+    "revision": "a76419671e6bf52658307983f7b3358c",
     "url": "/email-sig-generator/index.html"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/email-sig-generator/static/css/2.8ec8d563.chunk.css"
   },
   {
-    "revision": "7aadbafb065769e2ae98",
+    "revision": "33bb64861fb4f2a41778",
     "url": "/email-sig-generator/static/css/main.0706bf1f.chunk.css"
   },
   {
@@ -20,8 +20,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/email-sig-generator/static/js/2.ce6baa35.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "7aadbafb065769e2ae98",
-    "url": "/email-sig-generator/static/js/main.895435f0.chunk.js"
+    "revision": "33bb64861fb4f2a41778",
+    "url": "/email-sig-generator/static/js/main.b6eb6b00.chunk.js"
   },
   {
     "revision": "deba482c577d89852f36",
