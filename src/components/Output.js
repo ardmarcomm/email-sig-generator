@@ -87,7 +87,7 @@ export default class Output extends Component {
           color: "#716C6B",
           display: "block",
           width: "100%",
-          maxWidth: "500px"
+          maxWidth: "400px"
         }}
       >
         <tbody>
@@ -99,7 +99,8 @@ export default class Output extends Component {
                 color: "#716C6B",
                 paddingTop: "15px",
                 lineHeight: "1.4",
-                maxWidth: "400px"
+                width: "400px",
+                textAlign: "left"
               }}
             >
               The Northwestern campus sits on the traditional homelands of the
