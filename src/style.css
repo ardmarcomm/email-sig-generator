@@ -88,13 +88,13 @@ body {
 
 h2 {
   color: #4e2a84;
-  font: 46px/1.2em "Poppins Light", Tahoma, sans-serif;
+  font: 46px/1.2em "Poppins Light", Arial, sans-serif;
   margin-bottom: 1rem;
 }
 
 h3 {
   color: #4e2a84;
-  font: 24px/1.2em "Poppins Bold", Impact, sans-serif;
+  font: 24px/1.2em "Poppins Bold", Arial, sans-serif;
   margin-bottom: 0.5rem;
   margin-top: 2rem;
 }
@@ -113,7 +113,7 @@ h5 {
 
 h6 {
   color: #716c6b;
-  font: 18px/1.3em "Poppins Bold", Impact, sans-serif;
+  font: 18px/1.3em "Poppins Bold", Arial, sans-serif;
   margin-bottom: 1rem;
 }
 
