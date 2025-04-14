@@ -50,28 +50,28 @@
 
 @font-face {
     font-family: "Poppins Light";
-    src: url("https://common.northwestern.edu/v8/css/fonts/Poppins-Light.woff") format("woff");
+    src: url("https://common.northwestern.edu/v8/css/fonts/Poppins-Light.woff");
     font-weight: 300;
     font-style: normal;        
 }
 
 @font-face {
     font-family: "Poppins Bold";
-    src: url("https://common.northwestern.edu/v8/css/fonts/Poppins-Bold.woff") format("woff");
+    src: url("https://common.northwestern.edu/v8/css/fonts/Poppins-Bold.woff");
     font-weight: 700;
     font-style: normal;        
 }
 
 @font-face {
     font-family: "Poppins Extra Bold";
-    src: url("https://common.northwestern.edu/v8/css/fonts/Poppins-ExtraBold.woff") format("woff");
+    src: url("https://common.northwestern.edu/v8/css/fonts/Poppins-ExtraBold.woff");
     font-weight: 800;
     font-style: normal;        
 }
 
 @font-face {
     font-family: "Poppins Extra Light";
-    src: url("https://common.northwestern.edu/v8/css/fonts/Poppins-ExtraLight.woff") format("woff");
+    src: url("https://common.northwestern.edu/v8/css/fonts/Poppins-ExtraLight.woff");
     font-weight: 100;
     font-style: normal;        
 }
