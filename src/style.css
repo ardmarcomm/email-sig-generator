@@ -49,35 +49,31 @@
 }
 
 @font-face {
-  font-family: "Campton Book";
-  font-style: normal;
-  font-weight: 400;
-  src: url(https://common.northwestern.edu/v8/css/fonts/CamptonBook.woff)
-    format("woff");
+    font-family: "Poppins Light";
+    src: url("https://common.northwestern.edu/v8/css/fonts/Poppins-Light.woff") format("woff");
+    font-weight: 300;
+    font-style: normal;        
 }
 
 @font-face {
-  font-family: "Campton Bold";
-  font-style: normal;
-  font-weight: 400;
-  src: url(https://common.northwestern.edu/v8/css/fonts/CamptonBold.woff)
-    format("woff");
+    font-family: "Poppins Bold";
+    src: url("https://common.northwestern.edu/v8/css/fonts/Poppins-Bold.woff") format("woff");
+    font-weight: 700;
+    font-style: normal;        
 }
 
 @font-face {
-  font-family: "Campton Extra Bold";
-  font-style: normal;
-  font-weight: 400;
-  src: url(https://common.northwestern.edu/v8/css/fonts/CamptonExtraBold.woff)
-    format("woff");
+    font-family: "Poppins Extra Bold";
+    src: url("https://common.northwestern.edu/v8/css/fonts/Poppins-ExtraBold.woff") format("woff");
+    font-weight: 800;
+    font-style: normal;        
 }
 
 @font-face {
-  font-family: "Campton Extra Light";
-  font-style: normal;
-  font-weight: 400;
-  src: url(https://common.northwestern.edu/v8/css/fonts/CamptonExtraLight.woff)
-    format("woff");
+    font-family: "Poppins Extra Light";
+    src: url("https://common.northwestern.edu/v8/css/fonts/Poppins-ExtraLight.woff") format("woff");
+    font-weight: 100;
+    font-style: normal;        
 }
 
 * {
@@ -92,13 +88,13 @@ body {
 
 h2 {
   color: #4e2a84;
-  font: 46px/1.2em "Campton Book", Tahoma, sans-serif;
+  font: 46px/1.2em "Poppins Light", Tahoma, sans-serif;
   margin-bottom: 1rem;
 }
 
 h3 {
   color: #4e2a84;
-  font: 24px/1.2em "Campton Bold", Impact, sans-serif;
+  font: 24px/1.2em "Poppins Bold", Impact, sans-serif;
   margin-bottom: 0.5rem;
   margin-top: 2rem;
 }
@@ -117,7 +113,7 @@ h5 {
 
 h6 {
   color: #716c6b;
-  font: 18px/1.3em "Campton Bold", Impact, sans-serif;
+  font: 18px/1.3em "Poppins Bold", Impact, sans-serif;
   margin-bottom: 1rem;
 }
 
