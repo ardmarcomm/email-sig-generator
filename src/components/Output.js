@@ -347,7 +347,7 @@ export default class Output extends Component {
                     style={{
                       color: "#4e2a84"
                     }}
-                    href="https://www.alumni.northwestern.edu/s/1479/02-naa/16/home.aspx?sid=1479&gid=2&pgid=20761&utm_medium=email&utm_source=ARD%20email&utm_campaign=ARD%20Email%20Signature"
+                    href="https://alumni.northwestern.edu"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
@@ -371,7 +371,7 @@ export default class Output extends Component {
                     style={{
                       color: "#4e2a84"
                     }}
-                    href="https://www.giving.northwestern.edu"
+                    href="https://giving.northwestern.edu"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
