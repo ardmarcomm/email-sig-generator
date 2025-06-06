@@ -65,7 +65,7 @@ class App extends React.Component {
 
   isClassYearValid = (yearInput) => {
     yearInput = parseInt(yearInput);
-    if (yearInput >= 1935 && yearInput <= 2025) {
+    if (yearInput >= 1935 && yearInput <= 2030) {
       return true;
     } else {
       return false;
