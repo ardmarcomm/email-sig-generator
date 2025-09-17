@@ -6,7 +6,7 @@ import CheckboxStep from "./CheckboxStep";
 import DegreeInfo from "./DegreeInfo";
 import ParentInfo from "./ParentInfo";
 import AddressOptions from "./AddressOptions";
-import UniversityProgramming from "./UniversityProgramming"; 
+import UniversityProgramming from "./UniversityProgramming";
 import IconButton from "@material-ui/core/IconButton";
 import AddIcon from "@material-ui/icons/AddBoxOutlined";
 
@@ -126,6 +126,20 @@ export default class Form extends Component {
           isRequired={false}
           halfWidth={true}
         />
+        <h3>Hear My Name</h3>
+        <p>
+          Optional: Be able to record your name so that people can be able to
+          know how to say your name. <a href="https://www.name-coach.com/events/name-profile/registrations/new" target="_blank">Use this link</a> to create a recording of your
+          name, after creation, copy link at the. bottom and paste in the field
+          below.
+        </p>
+        <InputStep
+          fieldName={"hearMyNameLink"}
+          fieldLabel={"Paste Hear My Name link"}
+          // fieldDefaultVals={this.props.globalState.hearMyNameLink}
+          handleFieldChange={this.props.handleFieldChange}
+          isRequired={false}
+        />
         <h3>Alumni Designation</h3>
         <div className="checkboxes">
           <div className="form-step">
@@ -166,7 +180,9 @@ export default class Form extends Component {
           isRequired={[true, true]}
         />
         <h3>Pronouns</h3>
-        <div className="sub-head-helper">Optional (e.g., she/her/hers, he/him/his, and they/their/theirs, etc.)</div>
+        <div className="sub-head-helper">
+          Optional (e.g., she/her/hers, he/him/his, and they/their/theirs, etc.)
+        </div>
         <InputStep
           fieldName={"pronouns"}
           fieldLabel={"Pronouns"}
@@ -195,13 +211,39 @@ export default class Form extends Component {
           phoneNumValidity={this.props.phoneNumValidity}
           isRequired={[true, false]}
         />
-        <h3>University-Specific Programming</h3>
+        {/* <h3>University-Specific Programming</h3>
         <div className="sub-head-helper">Optional Programming Message</div>
         <UniversityProgramming
           handleFieldChange={this.props.handleFieldChange}
           fieldDefaultVals={this.props.globalState.specialMsg}
           isRequired={false}
-        />
+        /> */}
+        <h3>Land Acknowledgment</h3>
+        <div className="sub-head-helper">
+          Optional Land Acknowledgment Message
+        </div>
+        <div className="form-step">
+          <CheckboxStep
+            fieldName="Check if you would like to include Northwestern’s land acknowledgment in your email signature (optional)"
+            handleAlumToggle={this.props.handleAcknowledgementToggle}
+            isChecked={this.props.isAcknowledgement}
+          />
+          <p>
+            A land acknowledgment is a formal statement that recognizes and
+            respects Indigenous peoples as traditional stewards of this land and
+            the enduring relationship that exists between Indigenous peoples and
+            their traditional territories. To recognize the land is an
+            expression of gratitude and appreciation to those whose territory
+            you reside on, and a way of honoring the Indigenous people who have
+            been living and working on the land from time immemorial. ARD staff
+            may choose to include Northwestern’s land acknowledgment in their
+            email signatures. Learn more about the land acknowledgment{" "}
+            <a href="http://northwestern.edu/native-american-and-indigenous-peoples/about/Land%20Acknowledgement.html">
+              here
+            </a>
+            .
+          </p>
+        </div>
         {this.props.cantGenerateSig && GenerateSigError}
         <Button handleClick={this.props.handleClick}></Button>
       </article>

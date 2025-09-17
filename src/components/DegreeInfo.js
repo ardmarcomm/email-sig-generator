@@ -146,7 +146,7 @@ export default class DegreeInfo extends Component {
           ></TextField>
           {this.state.classYear !== 0 && !this.props.isYearValid && (
             <div className="errorText">
-              * Year must be between 1934 and 2026
+              * Year must be between 1934 and 2030
             </div>
           )}
         </FormControl>

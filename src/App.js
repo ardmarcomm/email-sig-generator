@@ -8,8 +8,8 @@ import Output from "./components/Output";
 const theme = createMuiTheme({
   palette: {
     primary: {
-      main: '#4e2a84',
-    }
+      main: "#4e2a84",
+    },
   },
   typography: {
     fontFamily: ['"Akkurat Pro Regular"'],
@@ -24,9 +24,11 @@ class App extends React.Component {
       firstName: "",
       lastName: "",
       middleName: "",
+      hearMyNameLink: "",
       isUndergradAlum: false,
       isGradAlum: false,
       isParentAlum: false,
+      isAcknowledgement: false,
       underGradInfo: [],
       gradInfo: [],
       parentInfo: [],
@@ -47,26 +49,24 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    const tempState = JSON.parse(localStorage.getItem('localState'));
+    const tempState = JSON.parse(localStorage.getItem("localState"));
 
     if (tempState) {
-      this.setState(tempState)
+      this.setState(tempState);
     } else {
       console.log("There was no local storage memory");
     }
   }
 
   componentWillUpdate(nextProps, nextState) {
-    localStorage.setItem('localState', JSON.stringify(nextState));
+    localStorage.setItem("localState", JSON.stringify(nextState));
   }
 
-  checkLocalStorage = () => {
-
-  }
+  checkLocalStorage = () => {};
 
   isClassYearValid = (yearInput) => {
     yearInput = parseInt(yearInput);
-    if (yearInput >= 1935 && yearInput <= 2025) {
+    if (yearInput >= 1935 && yearInput <= 2030) {
       return true;
     } else {
       return false;
@@ -122,6 +122,12 @@ class App extends React.Component {
     });
   };
 
+  handleHearMyNameLink = () => {
+    const myNewLink = { ...this.state };
+    this.setState = myNewLink;
+    console.log(`${myNewLink}`)
+  };
+
   handleAddParentDegree = () => {
     const obj = { degree: "", year: "", isYearValid: false, errMsg: "" };
     this.setState({
@@ -134,15 +140,15 @@ class App extends React.Component {
     var arrCopy = this.state[type];
     arrCopy.splice(idx, 1);
     this.setState({
-      type: arrCopy
-    })
-    if(arrCopy.length === 0){
-      if(type === "parentInfo"){
-        this.setState({isParentAlum: false})
-      } else if(type === "gradInfo") {
-        this.setState({isGradAlum: false})
+      type: arrCopy,
+    });
+    if (arrCopy.length === 0) {
+      if (type === "parentInfo") {
+        this.setState({ isParentAlum: false });
+      } else if (type === "gradInfo") {
+        this.setState({ isGradAlum: false });
       } else {
-        this.setState({isUndergradAlum: false})
+        this.setState({ isUndergradAlum: false });
       }
     }
   };
@@ -153,7 +159,7 @@ class App extends React.Component {
       this.setState({ underGradInfo: [] });
       this.setState({ isUndergradAlum: !isUndergradAlum });
     } else {
-      const obj = { year: "", isYearValid: false, errMsg: ""};
+      const obj = { year: "", isYearValid: false, errMsg: "" };
       this.setState({
         underGradInfo: [...this.state.underGradInfo, obj],
       });
@@ -167,7 +173,7 @@ class App extends React.Component {
       this.setState({ gradInfo: [] });
       this.setState({ isGradAlum: !isGradAlum });
     } else {
-      const obj = { degree: "", year: "", isYearValid: false, errMsg: ""};
+      const obj = { degree: "", year: "", isYearValid: false, errMsg: "" };
       this.setState({
         gradInfo: [...this.state.gradInfo, obj],
       });
@@ -190,13 +196,13 @@ class App extends React.Component {
       this.setState({ parentInfo: [] });
       this.setState({ isParentAlum: !isParentAlum });
     } else {
-      const obj = {degree: "", year: "", isYearValid: false, errMsg: ""};
+      const obj = { degree: "", year: "", isYearValid: false, errMsg: "" };
       this.setState({
-        parentInfo: [...this.state.parentInfo, obj]
+        parentInfo: [...this.state.parentInfo, obj],
       });
-      this.setState({ isParentAlum: !isParentAlum});
+      this.setState({ isParentAlum: !isParentAlum });
     }
-  }
+  };
 
   handleDateChange = () => {
     const myNewState = { ...this.state };
@@ -205,9 +211,6 @@ class App extends React.Component {
   };
 
   handleClick = () => {
-
-
-
     if (
       this.state.firstName.length > 0 &&
       this.state.lastName.length > 0 &&
@@ -237,15 +240,19 @@ class App extends React.Component {
             Signature” when you’ve provided the requested information.
           </p>
           <p>
-            You may copy and paste your new signature into your email template. For further instructions on how to set a signature on Outlook, follow&nbsp;
-            <a target="_blank" rel="noopener noreferrer" href="https://support.office.com/en-us/article/create-and-add-a-signature-to-messages-8ee5d4f4-68fd-464a-a1c1-0e1c80bb27f2">
-            this guide
+            You may copy and paste your new signature into your email template.
+            For further instructions on how to set a signature on Outlook,
+            follow&nbsp;
+            <a
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://support.office.com/en-us/article/create-and-add-a-signature-to-messages-8ee5d4f4-68fd-464a-a1c1-0e1c80bb27f2"
+            >
+              this guide
             </a>
             .
           </p>
-          <p>
-            Note: Asterisks (*) indicate required information.
-          </p>
+          <p>Note: Asterisks (*) indicate required information.</p>
           <Form
             globalState={stateCopy}
             handleClick={this.handleClick}
@@ -256,6 +263,7 @@ class App extends React.Component {
             isUndergradAlum={this.state.isUndergradAlum}
             isGradAlum={this.state.isGradAlum}
             isParentAlum={this.state.isParentAlum}
+            isAcknowledgement={this.state.isAcknowledgement}
             underGradInfo={this.state.underGradInfo}
             gradInfo={this.state.gradInfo}
             parentInfo={this.state.parentInfo}
@@ -265,6 +273,7 @@ class App extends React.Component {
             handleFieldChange={this.handleFieldChange}
             handlePronounChange={this.handlePronounChange}
             handleDegreeChange={this.handleDegreeChange}
+            handleHearMyNameLink={this.handleHearMyNameLink}
             phoneNumValidity={this.state.phoneNumValidity}
             cantGenerateSig={this.state.cantGenerateSig}
           />
