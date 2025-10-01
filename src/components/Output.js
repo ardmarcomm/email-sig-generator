@@ -391,6 +391,20 @@ export default class Output extends Component {
               >
                 <a
                   style={{ color: "#716C6B", textDecoration: "none" }}
+                  href="https://www.instagram.com/northwesternalumni/"
+                >
+                  Instagram
+                </a>
+                {" | "}
+                <a
+                  style={{ color: "#716C6B", textDecoration: "none" }}
+                  href="https://www.linkedin.com/company/northwestern-alumni-association/"
+                >
+                  LinkedIn
+                </a>
+                {" | "}
+                <a
+                  style={{ color: "#716C6B", textDecoration: "none" }}
                   href="https://www.facebook.com/northwesternalumni"
                 >
                   Facebook
@@ -398,16 +412,9 @@ export default class Output extends Component {
                 {" | "}
                 <a
                   style={{ color: "#716C6B", textDecoration: "none" }}
-                  href="https://twitter.com/NUAlumni"
+                  href="https://www.youtube.com/NorthwesternAlumni"
                 >
-                  Twitter
-                </a>
-                {" | "}
-                <a
-                  style={{ color: "#716C6B", textDecoration: "none" }}
-                  href="https://www.instagram.com/northwesternalumni/"
-                >
-                  Instagram
+                  YouTube
                 </a>
               </td>
             </tr>
